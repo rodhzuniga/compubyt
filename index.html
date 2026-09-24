@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compubyte | Soluciones Informáticas, Soporte Técnico y Venta de Equipos</title>
-  <meta name="description"
-    content="Compubyte: Expertos en soporte técnico, redes, mantenimiento de computadoras, desarrollo de software y venta de equipo de cómputo. Conoce también Computienda POS.">
-
+  <title>Compubyte | Soluciones Informáticas, Soporte Técnico y Computienda POS en Huatusco, Ver.</title>
+  <meta name="description" content="Servicios informáticos integrales en Huatusco, Ver. Mantenimiento y reparación de computadoras, redes, venta de equipo y software de punto de venta Computienda POS.">
+  
   <!-- Google Fonts: Outfit & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -23,39 +19,48 @@
         extend: {
           colors: {
             brand: {
-              dark: '#0F172A',     /* Azul profundo */
-              primary: '#1E3A8A',  /* Azul marino */
-              blue: '#2563EB',     /* Azul brillante */
-              accent: '#DC2626',   /* Rojo moderno */
+              dark: '#0F172A',      /* Azul corporativo profundo */
+              primary: '#1E3A8A',   /* Azul marino */
+              blue: '#2563EB',      /* Azul vibrante secundario */
+              blueHover: '#1D4ED8',
+              accent: '#DC2626',    /* Rojo moderno dinámico */
               accentHover: '#B91C1C',
-              surface: '#F8FAFC',
+              surface: '#F8FAFC',   /* Fondo gris ultra suave */
               text: '#334155'
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
             display: ['Outfit', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-blue': '0 10px 25px -5px rgba(37, 99, 235, 0.25)',
+            'glow-red': '0 10px 25px -5px rgba(220, 38, 38, 0.25)',
           }
         }
       }
     }
   </script>
 </head>
-
 <body class="bg-brand-surface text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
 
   <!-- ==================== HEADER / NAVBAR ==================== -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-
-        <!-- Logo -->
-        <a href="#inicio" class="flex items-center gap-2 group">
-          <div
-            class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-dark to-brand-blue flex items-center justify-center text-white shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
+        
+        <!-- Logo con imagen + fallback de texto -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-xl p-1">
+          <img 
+            src="assets/img/logo.png" 
+            alt="Compubyte" 
+            class="h-10 sm:h-11 w-auto max-w-[160px] object-contain transition-transform group-hover:scale-105"
+            onerror="this.style.display='none'; document.getElementById('logo-fallback-icon').style.display='flex';"
+          >
+          <!-- Fallback icon si no carga la imagen -->
+          <div id="logo-fallback-icon" class="hidden w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-dark to-brand-blue items-center justify-center text-white shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
           <span class="text-2xl font-extrabold font-display tracking-tight text-brand-dark">
@@ -63,50 +68,34 @@
           </span>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-8">
-          <a href="#inicio"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Inicio</a>
-          <a href="#nosotros" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Sobre
-            Nosotros</a>
-          <a href="#servicios"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Servicios</a>
-          <a href="#productos"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Productos</a>
-          <a href="blog.html"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Blog</a>
-          <a href="#computienda"
-            class="text-sm font-semibold text-brand-blue hover:text-blue-800 transition-colors flex items-center gap-1.5">
-            <span class="relative flex h-2 w-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
-            </span>
-            Computienda POS
-          </a>
-          <a href="#testimonios"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Opiniones</a>
-          <a href="#contacto"
-            class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Contacto</a>
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7">
+          <a href="#inicio" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Inicio</a>
+          <a href="#nosotros" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Sobre Nosotros</a>
+          <a href="#servicios" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Servicios</a>
+          <a href="#productos" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Productos</a>
+          <a href="blog.html" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Blog</a>
+          <a href="#contacto" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Contacto</a>
         </nav>
 
-        <!-- Action CTA Desktop -->
-        <div class="hidden lg:flex items-center gap-4">
-          <a href="computienda/index.html"
-            class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-brand-blue bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all">
-            Ver Computienda POS
-          </a>
-          <a href="#contacto"
-            class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accentHover shadow-md shadow-red-600/20 hover:shadow-lg hover:shadow-red-600/30 transition-all">
-            Cotizar Servicio
+        <!-- Botón CTA Computienda POS en Rojo Destacado -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a 
+            href="./computienda/index.html" 
+            class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-extrabold text-white bg-brand-accent hover:bg-brand-accentHover shadow-glow-red hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+          >
+            <span class="mr-1.5">⚡</span> Punto de Venta Computienda
           </a>
         </div>
 
-        <!-- Mobile Menu Button -->
+        <!-- Botón Menú Hamburguesa Móvil -->
         <div class="lg:hidden flex items-center">
-          <button id="mobile-menu-btn" type="button"
-            class="p-2 rounded-lg text-slate-700 hover:text-brand-dark hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue"
-            aria-label="Abrir menú de navegación">
+          <button 
+            id="mobile-menu-btn" 
+            type="button" 
+            class="p-2.5 rounded-xl text-slate-700 hover:text-brand-dark hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-colors" 
+            aria-label="Abrir menú de navegación"
+          >
             <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -119,184 +108,176 @@
       </div>
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobile-menu"
-      class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 transition-all">
-      <a href="#inicio"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Inicio</a>
-      <a href="#nosotros"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Sobre
-        Nosotros</a>
-      <a href="#servicios"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Servicios</a>
-      <a href="#productos"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Productos</a>
-      <a href="blog.html"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Blog</a>
-      <a href="#computienda"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-brand-blue font-semibold bg-blue-50">★ Ver
-        Computienda POS</a>
-      <a href="#testimonios"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Opiniones</a>
-      <a href="#contacto"
-        class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Contacto</a>
-      <div class="pt-4 flex flex-col gap-2">
-        <a href="#contacto"
-          class="mobile-nav-link w-full text-center py-2.5 px-4 rounded-lg bg-brand-accent text-white font-semibold text-sm shadow">Contactar
-          Ahora</a>
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-5 pt-3 pb-6 space-y-3 transition-all">
+      <a href="#inicio" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Inicio</a>
+      <a href="#nosotros" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Sobre Nosotros</a>
+      <a href="#servicios" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Servicios</a>
+      <a href="#productos" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Productos</a>
+      <a href="blog.html" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Blog</a>
+      <a href="#contacto" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Contacto</a>
+      
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <a 
+          href="./computienda/index.html" 
+          class="mobile-nav-link w-full text-center py-3 px-4 rounded-xl bg-brand-accent text-white font-bold text-xs uppercase tracking-wider shadow-md"
+        >
+          ⚡ Punto de Venta Computienda
+        </a>
       </div>
     </div>
   </header>
 
   <main>
     <!-- ==================== HERO SECTION ==================== -->
-    <section id="inicio"
-      class="relative overflow-hidden pt-12 pb-20 lg:pt-24 lg:pb-32 bg-gradient-to-b from-white via-slate-50 to-brand-surface">
-      <!-- Decorative background blur elements -->
-      <div class="absolute -top-24 -left-20 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute top-1/2 -right-20 w-96 h-96 bg-red-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section id="inicio" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-white via-slate-50 to-brand-surface">
+      
+      <!-- Efectos sutiles de fondo con gradientes -->
+      <div class="absolute -top-24 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/3 -right-20 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
-          <!-- Text Content -->
+          
+          <!-- Contenido textual Hero -->
           <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div
-              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-brand-blue text-xs font-semibold tracking-wide uppercase">
-              <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
-              Líderes en Soluciones TI Locales
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-brand-blue text-xs font-bold tracking-wide uppercase shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+              Soporte TI Profesional en Huatusco, Ver.
             </div>
-            <h1
-              class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-brand-dark leading-[1.15]">
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-brand-dark leading-[1.12]">
               Soluciones Informáticas <br class="hidden sm:inline">
-              <span
-                class="bg-gradient-to-r from-brand-blue to-blue-700 bg-clip-text text-transparent">Profesionales</span>
-              y Equipamiento de Vanguardia
+              <span class="bg-gradient-to-r from-brand-blue via-blue-600 to-brand-primary bg-clip-text text-transparent">Profesionales</span> para Empresas y Hogares
             </h1>
-            <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-              En <strong class="text-brand-dark font-semibold">Compubyte</strong> potenciamos negocios y hogares con
-              soporte técnico integral, infraestructura de redes confiable y los mejores equipos de cómputo del mercado.
+
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+              En <strong class="text-brand-dark font-semibold">Compubyte</strong> brindamos mantenimiento preventivo y correctivo, infraestructura de redes, venta de equipo y el software comercial <strong class="text-brand-accent font-semibold">Computienda POS</strong> para potenciar la productividad de tu negocio.
             </p>
 
-            <!-- CTA Buttons -->
+            <!-- Botones CTA Principales -->
             <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-              <a href="#contacto"
-                class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-brand-accent hover:bg-brand-accentHover shadow-xl shadow-red-600/25 hover:shadow-2xl hover:shadow-red-600/35 transition-all text-center flex items-center justify-center gap-2 group">
-                <span>Contactar ahora</span>
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <!-- Botón Contactar por WhatsApp -->
+              <a 
+                href="https://wa.me/524981152637?text=Hola%20Compubyte,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20y%20soporte%20t%C3%A9cnico" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-glow-red hover:shadow-2xl transition-all text-center flex items-center justify-center gap-3 transform hover:-translate-y-0.5"
+              >
+                <!-- Icono WhatsApp SVG -->
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                 </svg>
+                <span>Contactar por WhatsApp</span>
               </a>
-              <a href="#servicios"
-                class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-white bg-brand-blue hover:bg-blue-700 shadow-xl shadow-blue-600/25 hover:shadow-2xl hover:shadow-blue-600/35 transition-all text-center">
-                Nuestros Servicios
+
+              <!-- Botón Ver Servicios -->
+              <a 
+                href="#servicios" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 shadow-sm hover:shadow-md transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>Nuestros Servicios</span>
+                <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
               </a>
             </div>
 
-            <!-- Highlights -->
-            <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-200/80 max-w-lg mx-auto lg:mx-0">
-              <div>
-                <p class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark">+10</p>
-                <p class="text-xs sm:text-sm text-slate-500 font-medium">Años de experiencia</p>
-              </div>
-              <div>
-                <p class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark">100%</p>
-                <p class="text-xs sm:text-sm text-slate-500 font-medium">Garantía y soporte</p>
-              </div>
-              <div>
-                <p class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark">+1,500</p>
-                <p class="text-xs sm:text-sm text-slate-500 font-medium">Equipos atendidos</p>
-              </div>
+            <!-- Fila de confianza rápida -->
+            <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs font-semibold text-slate-500">
+              <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✓</span> Soporte en Huatusco</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✓</span> Diagnóstico confiable</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-600 font-bold">✓</span> Garantía por escrito</span>
             </div>
 
           </div>
 
-          <!-- Hero Graphic / Mockup -->
+          <!-- Gráfico y Tarjetas Flotantes Estadísticas -->
           <div class="lg:col-span-5 relative">
             <div class="relative mx-auto max-w-md lg:max-w-none">
+              
+              <!-- Tarjeta Visual Principal de Estado del Sistema -->
+              <div class="relative bg-brand-dark rounded-3xl p-6 sm:p-8 shadow-2xl text-white overflow-hidden border border-slate-700/60">
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-blue/20 rounded-full blur-2xl"></div>
 
-              <!-- Main Visual Card -->
-              <div
-                class="relative bg-brand-dark rounded-2xl p-6 sm:p-8 shadow-2xl text-white overflow-hidden border border-slate-700/50">
-                <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-brand-blue/30 rounded-full blur-2xl"></div>
-                <div class="flex items-center justify-between border-b border-slate-700/60 pb-4 mb-6">
+                <!-- Cabecera de consola -->
+                <div class="flex items-center justify-between border-b border-slate-700/80 pb-4 mb-6">
                   <div class="flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-red-500"></span>
                     <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
                     <span class="w-3 h-3 rounded-full bg-green-500"></span>
                   </div>
-                  <span
-                    class="text-xs font-mono text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded">compubyte-diagnostics
-                    v3.2</span>
+                  <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">compubyte-center v4.2</span>
                 </div>
 
-                <!-- Server & Tech Illustration -->
+                <!-- Lista de status técnico -->
                 <div class="space-y-4">
-                  <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60 flex items-center gap-4">
-                    <div
-                      class="w-12 h-12 rounded-lg bg-blue-500/20 text-brand-blue flex items-center justify-center shrink-0">
+                  
+                  <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/20 text-brand-blue flex items-center justify-center shrink-0">
                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                       </svg>
                     </div>
                     <div class="flex-1">
                       <div class="flex justify-between items-center mb-1">
-                        <span class="text-xs font-semibold text-slate-200">Rendimiento & Redes</span>
-                        <span class="text-xs font-bold text-green-400">Óptimo 99.9%</span>
+                        <span class="text-xs font-bold text-slate-200">Diagnóstico & Seguridad</span>
+                        <span class="text-xs font-bold text-emerald-400">100% Verificado</span>
                       </div>
                       <div class="w-full bg-slate-700 rounded-full h-1.5">
-                        <div class="bg-brand-blue h-1.5 rounded-full" style="width: 95%"></div>
+                        <div class="bg-brand-blue h-1.5 rounded-full" style="width: 100%"></div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60 flex items-center gap-4">
-                    <div
-                      class="w-12 h-12 rounded-lg bg-red-500/20 text-brand-accent flex items-center justify-center shrink-0">
+                  <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/20 text-brand-accent flex items-center justify-center shrink-0">
                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                    <div class="flex-1">
-                      <div class="flex justify-between items-center mb-1">
-                        <span class="text-xs font-semibold text-slate-200">Seguridad & Backup TI</span>
-                        <span class="text-xs font-bold text-blue-400">Activo</span>
-                      </div>
-                      <div class="w-full bg-slate-700 rounded-full h-1.5">
-                        <div class="bg-brand-accent h-1.5 rounded-full" style="width: 100%"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/60 flex items-center gap-4">
-                    <div
-                      class="w-12 h-12 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div>
-                      <h4 class="text-xs font-bold text-white">Soporte Express 24/7</h4>
-                      <p class="text-xs text-slate-400">Atención remota y presencial inmediata</p>
+                      <h4 class="text-xs font-bold text-white">Soporte Rápido y Garantizado</h4>
+                      <p class="text-xs text-slate-400">Atención en tienda y a domicilio en Huatusco</p>
                     </div>
                   </div>
+
+                  <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/80 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="text-xs font-bold text-white">Computienda POS Integrado</h4>
+                      <p class="text-xs text-slate-400">Punto de venta listo para instalar en tu mostrador</p>
+                    </div>
+                  </div>
+
                 </div>
 
               </div>
 
-              <!-- Floating badge -->
-              <div
-                class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 flex items-center gap-3">
-                <div
-                  class="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-lg">
-                  ✓</div>
+              <!-- Tarjeta Flotante Estadística 1 (Inferior izquierda) -->
+              <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg">
+                  📍
+                </div>
                 <div>
-                  <p class="text-xs font-bold text-brand-dark">Técnicos Certificados</p>
-                  <p class="text-[11px] text-slate-500">Garantía por escrito</p>
+                  <p class="text-xs font-extrabold text-brand-dark">Atención Local</p>
+                  <p class="text-[11px] text-slate-500">Avenida 3 poniente 416</p>
+                </div>
+              </div>
+
+              <!-- Tarjeta Flotante Estadística 2 (Superior derecha) -->
+              <div class="hidden sm:flex absolute -top-5 -right-5 bg-white p-3.5 rounded-2xl shadow-xl border border-slate-100 items-center gap-2.5">
+                <div class="w-8 h-8 rounded-lg bg-red-100 text-brand-accent flex items-center justify-center font-bold text-sm">
+                  ★
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-brand-dark">Garantía Escrita</p>
+                  <p class="text-[10px] text-slate-400">Servicio respaldado</p>
                 </div>
               </div>
 
@@ -310,121 +291,74 @@
     <!-- ==================== SOBRE NOSOTROS ==================== -->
     <section id="nosotros" class="py-20 bg-white border-y border-slate-200/80">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+        
         <div class="grid lg:grid-cols-12 gap-12 items-center">
-
+          
           <div class="lg:col-span-6 space-y-6">
-            <span class="text-brand-blue font-bold text-sm tracking-wider uppercase">Nuestra Trayectoria</span>
+            <span class="text-brand-blue font-bold text-xs uppercase tracking-wider">Compromiso Tecnológico Local</span>
             <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight leading-tight">
-              Compromiso, Confianza y Vanguardia Tecnológica para tu Negocio
+              Tu aliado informático de confianza en Huatusco, Veracruz
             </h2>
-            <p class="text-slate-600 leading-relaxed text-base sm:text-lg">
-              En <strong class="text-brand-dark font-medium">Compubyte</strong> nacimos con la firme misión de ofrecer a
-              pequeñas, medianas empresas y usuarios particulares un servicio informático honesto, puntual y con los más
-              altos estándares de calidad.
+            <p class="text-slate-600 leading-relaxed text-base">
+              En <strong class="text-brand-dark font-medium">Compubyte</strong> entendemos lo crucial que es la tecnología tanto para las familias como para el comercio de nuestra región. Con base en <strong class="text-brand-dark">Huatusco, Ver.</strong>, brindamos una alternativa honesta, profesional y rápida para resolver cualquier falla en tus equipos de cómputo.
             </p>
-            <p class="text-slate-600 leading-relaxed">
-              Sabemos que la tecnología es el corazón de las operaciones cotidianas. Por eso no solo reparamos
-              computadoras y montamos redes: nos convertimos en tu aliado tecnológico estratégico para prevenir fallas,
-              proteger tu información y optimizar tus costos operativos.
+            <p class="text-slate-600 leading-relaxed text-sm">
+              Desde la reparación de laptops para estudiantes hasta el diseño e instalación de infraestructura de redes para negocios y despachos, respaldamos cada servicio con refacciones de calidad y asesoría personalizada.
             </p>
 
-            <!-- Values checklist -->
             <div class="grid sm:grid-cols-2 gap-4 pt-2">
-              <div class="flex items-start gap-3">
-                <div
-                  class="w-6 h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
+              <div class="flex items-start gap-3 p-3.5 rounded-xl bg-brand-surface border border-slate-200">
+                <span class="text-brand-blue font-bold text-base mt-0.5">✓</span>
                 <div>
-                  <h4 class="font-semibold text-brand-dark text-sm">Honestidad y Transparencia</h4>
-                  <p class="text-xs text-slate-500">Diagnósticos claros sin costos ocultos.</p>
+                  <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wide">Trato Humano y Cercano</h4>
+                  <p class="text-xs text-slate-500">Explicaciones claras sin tecnicismos confusos.</p>
                 </div>
               </div>
-
-              <div class="flex items-start gap-3">
-                <div
-                  class="w-6 h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
+              <div class="flex items-start gap-3 p-3.5 rounded-xl bg-brand-surface border border-slate-200">
+                <span class="text-brand-accent font-bold text-base mt-0.5">✓</span>
                 <div>
-                  <h4 class="font-semibold text-brand-dark text-sm">Respuesta Inmediata</h4>
-                  <p class="text-xs text-slate-500">Atención ágil ante emergencias operativas.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div
-                  class="w-6 h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-brand-dark text-sm">Garantía por Escrito</h4>
-                  <p class="text-xs text-slate-500">Respaldamos cada trabajo realizado.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div
-                  class="w-6 h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-brand-dark text-sm">Equipo Multidisciplinario</h4>
-                  <p class="text-xs text-slate-500">Ingenieros en sistemas y técnicos certificados.</p>
+                  <h4 class="font-bold text-brand-dark text-xs uppercase tracking-wide">Precios Justos</h4>
+                  <p class="text-xs text-slate-500">Presupuestos transparentes antes de cada reparación.</p>
                 </div>
               </div>
             </div>
 
           </div>
 
-          <!-- Feature cards grid -->
+          <!-- Tarjeta de Misión / Localidad -->
           <div class="lg:col-span-6 grid sm:grid-cols-2 gap-6">
-            <div class="bg-brand-surface p-6 rounded-2xl border border-slate-200/80 hover:shadow-lg transition-shadow">
-              <div
-                class="w-12 h-12 rounded-xl bg-brand-dark text-white flex items-center justify-center font-bold text-xl mb-4 font-display">
+            
+            <div class="bg-brand-surface p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex items-center justify-center font-bold text-xl mb-4 font-display">
                 M
               </div>
               <h3 class="text-lg font-bold font-display text-brand-dark mb-2">Misión</h3>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Brindar soluciones integrales de tecnología informática con calidez humana, rapidez y máxima
-                efectividad, garantizando la continuidad de tu productividad.
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Resolver con eficiencia y calidez los retos tecnológicos de nuestra comunidad en Huatusco, alargando la vida útil de sus equipos y optimizando sus negocios.
               </p>
             </div>
 
-            <div class="bg-brand-surface p-6 rounded-2xl border border-slate-200/80 hover:shadow-lg transition-shadow">
-              <div
-                class="w-12 h-12 rounded-xl bg-brand-blue text-white flex items-center justify-center font-bold text-xl mb-4 font-display">
+            <div class="bg-brand-surface p-7 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+              <div class="w-12 h-12 rounded-xl bg-brand-blue text-white flex items-center justify-center font-bold text-xl mb-4 font-display">
                 V
               </div>
               <h3 class="text-lg font-bold font-display text-brand-dark mb-2">Visión</h3>
-              <p class="text-slate-600 text-sm leading-relaxed">
-                Ser la empresa de referencia regional en servicios de soporte informático, infraestructura digital y
-                soluciones comerciales de punto de venta.
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Consolidarnos como el centro de soluciones tecnológicas de referencia en la región de las Altas Montañas por nuestra honestidad y profesionalismo.
               </p>
             </div>
 
-            <div
-              class="bg-brand-surface p-6 rounded-2xl border border-slate-200/80 hover:shadow-lg transition-shadow sm:col-span-2">
-              <div class="flex items-center gap-4">
-                <div
-                  class="w-12 h-12 rounded-xl bg-red-100 text-brand-accent flex items-center justify-center font-bold text-xl shrink-0">
-                  ★
-                </div>
-                <div>
-                  <h4 class="text-base font-bold text-brand-dark">Puntualidad y Soporte Dedicado</h4>
-                  <p class="text-slate-600 text-sm">Atendemos clientes en tienda física, a domicilio y de manera remota
-                    para minimizar los tiempos de inactividad.</p>
-                </div>
+            <div class="sm:col-span-2 bg-gradient-to-r from-blue-900 to-brand-dark p-6 rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <h4 class="font-bold text-base">¿Deseas visitarnos en nuestro taller?</h4>
+                <p class="text-xs text-slate-300">Avenida 3 poniente 416, Huatusco, Ver. Estaremos encantados de recibirte.</p>
               </div>
+              <a 
+                href="#contacto" 
+                class="px-5 py-2.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-xs font-bold tracking-wider uppercase transition shadow-glow-red shrink-0"
+              >
+                Ver Ubicación
+              </a>
             </div>
 
           </div>
@@ -437,127 +371,93 @@
     <!-- ==================== SERVICIOS PRINCIPALES ==================== -->
     <section id="servicios" class="py-20 bg-brand-surface">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+        
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-brand-accent font-bold text-sm tracking-wider uppercase">Lo Que Hacemos</span>
+          <span class="text-brand-accent font-bold text-xs uppercase tracking-wider">Nuestra Especialidad</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight">
-            Servicios Informáticos de Nivel Empresarial
+            Servicios Integrales para tu Equipamiento
           </h2>
-          <p class="text-slate-600 text-base sm:text-lg">
-            Cubrimos todo el ciclo tecnológico de tu empresa u hogar con personal calificado y herramientas de
-            diagnóstico de última generación.
+          <p class="text-slate-600 text-sm sm:text-base">
+            Equipamiento especializado y personal con experiencia para resolver cualquier requerimiento informático.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-          <!-- Servicio 1 -->
-          <div
-            class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          
+          <!-- Servicio 1: Mantenimiento y Reparación -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div
-                class="w-14 h-14 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <h3 class="text-xl font-bold font-display text-brand-dark mb-3">Mantenimiento y Reparación</h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                Mantenimiento preventivo y correctivo de PCs, laptops y servidores. Limpieza física interna, cambio de
-                pasta térmica, optimización de sistema operativo y eliminación de malware.
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Limpieza interna profunda, cambio de pasta térmica, eliminación de virus, reparación de bisagras y reemplazo de pantallas, discos sólidos y memorias RAM.
               </p>
             </div>
             <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-100">
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Formateo y recuperación de datos
-              </li>
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Reemplazo de pantallas y baterías
-              </li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Formateo y reinstalación limpia</li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Recuperación de datos</li>
             </ul>
           </div>
 
-          <!-- Servicio 2 -->
-          <div
-            class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          <!-- Servicio 2: Redes e Infraestructura -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div
-                class="w-14 h-14 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
                 </svg>
               </div>
               <h3 class="text-xl font-bold font-display text-brand-dark mb-3">Redes e Infraestructura</h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                Diseño, cableado estructurado e implementación de redes cableadas e inalámbricas de alto rendimiento.
-                Configuración de routers, switches, firewalls y servidores locales.
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Diseño e instalación de cableado estructurado Cat6, configuración de routers, switches y repetidores WiFi de alta potencia para eliminar zonas sin señal.
               </p>
             </div>
             <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-100">
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Cableado Cat6 / Cat6A certificado
-              </li>
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Cobertura WiFi unificada empresarial
-              </li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Redes para oficinas y comercios</li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Conexión segura para impresoras</li>
             </ul>
           </div>
 
-          <!-- Servicio 3 -->
-          <div
-            class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          <!-- Servicio 3: Venta de Laptops y Hardware -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div
-                class="w-14 h-14 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
               <h3 class="text-xl font-bold font-display text-brand-dark mb-3">Venta de Cómputo y Accesorios</h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                Distribución autorizada de laptops, computadoras de escritorio ensambladas a medida para oficina o
-                gaming, monitores, impresoras y periféricos de marcas líderes.
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Laptops nuevas y reacondicionadas con garantía, PCs de escritorio a la medida para oficina o diseño, monitores, impresoras, teclados y consumibles.
               </p>
             </div>
             <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-100">
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Asesoría de compra sin costo
-              </li>
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Garantía directa de fábrica
-              </li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Asesoría honesta de compra</li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Equipos listos para trabajar</li>
             </ul>
           </div>
 
-          <!-- Servicio 4 -->
-          <div
-            class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+          <!-- Servicio 4: Software y Punto de Venta -->
+          <div class="bg-white rounded-2xl p-7 border border-slate-200 hover:border-brand-blue/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
             <div>
-              <div
-                class="w-14 h-14 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+              <div class="w-14 h-14 rounded-2xl bg-blue-50 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold font-display text-brand-dark mb-3">Software e Implementación</h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                Instalación y licenciamiento de software original (Windows, Office, Antivirus). Desarrollo a la medida,
-                respaldos automatizados en la nube y configuración de sistemas POS.
+              <h3 class="text-xl font-bold font-display text-brand-dark mb-3">Software & Punto de Venta</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                Instalación de sistemas operativos y paquetería de oficina. Implementación oficial de nuestro software estrella <strong class="text-brand-dark">Computienda POS</strong> para tu negocio.
               </p>
             </div>
             <ul class="text-xs text-slate-500 space-y-2 pt-4 border-t border-slate-100">
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Licenciamiento corporativo oficial
-              </li>
-              <li class="flex items-center gap-1.5">
-                <span class="text-brand-accent">✓</span> Puesta a punto de Computienda POS
-              </li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Capacitación a cajeros</li>
+              <li class="flex items-center gap-1.5"><span class="text-brand-accent">✓</span> Soporte técnico permanente</li>
             </ul>
           </div>
 
@@ -566,374 +466,145 @@
       </div>
     </section>
 
-    <!-- ==================== PRODUCTOS Y DESTACADO COMPUTIENDA POS ==================== -->
-    <section id="productos" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-
-        <!-- BANNER DESTACADO: COMPUTIENDA POS -->
-        <div id="computienda"
-          class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-dark via-slate-900 to-brand-primary p-8 sm:p-12 text-white shadow-2xl border border-slate-800">
-          <div class="absolute -right-16 -top-16 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none">
-          </div>
-          <div class="absolute right-1/3 -bottom-16 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl pointer-events-none">
-          </div>
+    <!-- ==================== BANNER DESTACADO COMPUTIENDA POS ==================== -->
+    <section id="productos" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-dark via-slate-900 to-brand-primary p-8 sm:p-12 text-white shadow-2xl border border-slate-800">
+          <div class="absolute -right-16 -top-16 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute right-1/3 -bottom-16 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
           <div class="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
-
+            
             <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
-              <div
-                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-bold tracking-wide uppercase">
-                ★ Producto Estrella Compubyte
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600/20 border border-red-500/40 text-red-300 text-xs font-bold tracking-wide uppercase">
+                ★ Desarrollado por Compubyte
               </div>
-              <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white">
+              <h3 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
                 Computienda <span class="text-brand-accent">POS</span>
               </h3>
-              <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-                El sistema de punto de venta definitivo para abarrotes, farmacias, ferreterías y comercios minoristas.
-                Controla inventarios en tiempo real, emite tickets, gestiona cortes de caja y acelera tus cobros sin
-                complicaciones.
+              <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                El sistema de punto de venta ideal para abarrotes, minisúpers, ferreterías, farmacias y comercios en Huatusco. Registra tus ventas con lector de barras, emite tickets rápidos y controla tus ganancias diarias sin rentas mensuales.
               </p>
 
-              <div
-                class="flex flex-wrap gap-4 pt-2 justify-center lg:justify-start text-xs sm:text-sm text-slate-300 font-medium">
+              <div class="flex flex-wrap gap-3 pt-2 justify-center lg:justify-start text-xs text-slate-300 font-medium">
                 <span class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Sin rentas forzosas
+                  <span class="text-emerald-400 font-bold">✓</span> Funciona sin internet obligatorio
                 </span>
                 <span class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Lector de código y cajón
+                  <span class="text-emerald-400 font-bold">✓</span> Compatible con impresoras térmicas
                 </span>
                 <span class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
-                  <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Capacitación y soporte incluido
+                  <span class="text-emerald-400 font-bold">✓</span> Instalación y capacitación local
                 </span>
               </div>
             </div>
 
-            <div class="lg:col-span-4 flex flex-col items-center justify-center gap-4">
-              <a href="computienda/index.html"
-                class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-lg shadow-red-600/30 text-center transition-all text-base hover:scale-105">
-                Ver Sitio de Computienda POS
+            <!-- Botón CTA a Computienda -->
+            <div class="lg:col-span-4 flex flex-col items-center justify-center gap-3">
+              <a 
+                href="./computienda/index.html" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl font-extrabold text-white bg-brand-accent hover:bg-brand-accentHover shadow-glow-red hover:shadow-2xl transition-all text-center text-sm uppercase tracking-wider transform hover:scale-105"
+              >
+                Conocer Computienda POS →
               </a>
-              <a href="computienda/index.html#demo" class="text-xs text-slate-400 underline hover:text-white transition-colors">
-                ¿Necesitas demostración en vivo? Agenda aquí →
+              <a 
+                href="./computienda/manual.html" 
+                class="text-xs text-slate-400 underline hover:text-white transition-colors"
+              >
+                Ver Manual del Usuario y Documentación
               </a>
             </div>
 
           </div>
-        </div>
-
-        <!-- CATÁLOGO BÁSICO DE EQUIPOS Y HARDWARE -->
-        <div>
-          <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-            <div>
-              <span class="text-brand-blue font-bold text-sm tracking-wider uppercase">Tienda de Hardware</span>
-              <h2 class="text-3xl font-extrabold font-display text-brand-dark tracking-tight">
-                Equipos y Periféricos Destacados
-              </h2>
-            </div>
-            <p class="text-sm text-slate-500 max-w-md">
-              Manejamos stock para entrega inmediata y configuración previa antes de la entrega para que solo llegues a
-              trabajar.
-            </p>
-          </div>
-
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Producto 1: Laptop -->
-            <div
-              class="bg-brand-surface rounded-2xl p-6 border border-slate-200/90 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div
-                  class="w-full h-48 bg-slate-100 rounded-xl mb-5 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-50 transition-colors">
-                  <!-- Laptop Vector Icon / Mock -->
-                  <svg class="w-24 h-24 text-slate-400 group-hover:text-brand-blue transition-colors" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span
-                    class="absolute top-3 right-3 bg-brand-blue text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
-                    Gama Oficina
-                  </span>
-                </div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Laptop Profesional</span>
-                <h3 class="text-lg font-bold font-display text-brand-dark mt-1 mb-2">Notebook Pro 15.6" Full HD</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">
-                  Intel Core i5 de 12ª Gen, 16GB RAM DDR4, 512GB SSD NVMe, Windows 11 Pro preinstalado y configurado.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-xs text-slate-400 block">Precio sugerido</span>
-                  <span class="text-xl font-black font-display text-brand-dark">$12,499 MXN</span>
-                </div>
-                <a href="#contacto"
-                  class="px-4 py-2 rounded-lg bg-brand-blue text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow">
-                  Cotizar
-                </a>
-              </div>
-            </div>
-
-            <!-- Producto 2: PC Escritorio -->
-            <div
-              class="bg-brand-surface rounded-2xl p-6 border border-slate-200/90 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div
-                  class="w-full h-48 bg-slate-100 rounded-xl mb-5 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-50 transition-colors">
-                  <!-- Desktop Vector Icon -->
-                  <svg class="w-24 h-24 text-slate-400 group-hover:text-brand-blue transition-colors" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                  <span
-                    class="absolute top-3 right-3 bg-brand-accent text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
-                    Alto Rendimiento
-                  </span>
-                </div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Computadora
-                  Ensamblada</span>
-                <h3 class="text-lg font-bold font-display text-brand-dark mt-1 mb-2">PC Workstation & Gaming</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">
-                  AMD Ryzen 7, 32GB RAM RGB, 1TB SSD M.2, Tarjeta Gráfica RTX 4060 8GB, Gabinete con flujo de aire
-                  optimizado.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-xs text-slate-400 block">Precio sugerido</span>
-                  <span class="text-xl font-black font-display text-brand-dark">$21,800 MXN</span>
-                </div>
-                <a href="#contacto"
-                  class="px-4 py-2 rounded-lg bg-brand-blue text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow">
-                  Cotizar
-                </a>
-              </div>
-            </div>
-
-            <!-- Producto 3: Kit Punto de Venta Hardware -->
-            <div
-              class="bg-brand-surface rounded-2xl p-6 border border-slate-200/90 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div>
-                <div
-                  class="w-full h-48 bg-slate-100 rounded-xl mb-5 flex items-center justify-center relative overflow-hidden group-hover:bg-blue-50 transition-colors">
-                  <!-- POS Vector Icon -->
-                  <svg class="w-24 h-24 text-slate-400 group-hover:text-brand-blue transition-colors" fill="none"
-                    stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  <span
-                    class="absolute top-3 right-3 bg-emerald-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
-                    Paquete Completo
-                  </span>
-                </div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Periféricos
-                  Comerciales</span>
-                <h3 class="text-lg font-bold font-display text-brand-dark mt-1 mb-2">Combo Hardware POS Completo</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-4">
-                  Impresora térmica de 80mm de alta velocidad, lector de código de barras láser con base y cajón de
-                  dinero metálico de 4 billetes.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
-                <div>
-                  <span class="text-xs text-slate-400 block">Precio paquete</span>
-                  <span class="text-xl font-black font-display text-brand-dark">$4,650 MXN</span>
-                </div>
-                <a href="#contacto"
-                  class="px-4 py-2 rounded-lg bg-brand-blue text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow">
-                  Cotizar
-                </a>
-              </div>
-            </div>
-
-          </div>
-
         </div>
 
       </div>
     </section>
 
-    <!-- ==================== TESTIMONIOS ==================== -->
-    <section id="testimonios" class="py-20 bg-slate-50 border-t border-slate-200/80">
+    <!-- ==================== DATOS DE CONTACTO Y UBICACIÓN ==================== -->
+    <section id="contacto" class="py-20 bg-brand-surface border-t border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+        
         <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-brand-accent font-bold text-sm tracking-wider uppercase">Casos de Éxito</span>
+          <span class="text-brand-blue font-bold text-xs uppercase tracking-wider">Estamos para Servirte</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight">
-            Lo Que Dicen Nuestros Clientes
+            Contáctanos o Visítanos en Huatusco
           </h2>
-          <p class="text-slate-600 text-base sm:text-lg">
-            La confianza y tranquilidad de nuestros clientes es el mejor aval de nuestro compromiso técnico diario.
+          <p class="text-slate-600 text-sm sm:text-base">
+            Envíanos un mensaje para cotizar tu servicio o resolver cualquier duda sobre tu equipo de cómputo.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-
-          <!-- Testimonio 1 -->
-          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-            <div class="space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                ★★★★★
-              </div>
-              <p class="text-slate-600 text-sm leading-relaxed italic">
-                "Excelente atención. Se nos cayó el servidor principal de la oficina en pleno cierre de mes y en menos
-                de dos horas Compubyte acudió a restaurar todo el sistema de respaldos. 100% recomendados."
-              </p>
-            </div>
-            <div class="pt-6 border-t border-slate-100 flex items-center gap-3 mt-6">
-              <div
-                class="w-10 h-10 rounded-full bg-brand-blue/10 text-brand-blue font-bold flex items-center justify-center text-sm">
-                RC
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-dark">Roberto Canales</h4>
-                <p class="text-xs text-slate-400">Director Administrativo, Grupo Logístico</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonio 2 -->
-          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-            <div class="space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                ★★★★★
-              </div>
-              <p class="text-slate-600 text-sm leading-relaxed italic">
-                "Implementamos Computienda POS en nuestras 3 sucursales de abarrotes. El cambio fue del cielo a la
-                tierra: control de inventario exacto y cero pérdidas. El soporte técnico siempre atiende con
-                amabilidad."
-              </p>
-            </div>
-            <div class="pt-6 border-t border-slate-100 flex items-center gap-3 mt-6">
-              <div
-                class="w-10 h-10 rounded-full bg-red-100 text-brand-accent font-bold flex items-center justify-center text-sm">
-                MG
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-dark">María Guadalupe Peña</h4>
-                <p class="text-xs text-slate-400">Propietaria de Minisúper La Fe</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonio 3 -->
-          <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
-            <div class="space-y-4">
-              <div class="flex text-amber-400 gap-1 text-sm">
-                ★★★★★
-              </div>
-              <p class="text-slate-600 text-sm leading-relaxed italic">
-                "Llevé mi laptop para mantenimiento y aumento de memoria para trabajo de diseño arquitectónico. Quedó
-                rapidísima, me explicaron cada detalle con transparencia y el precio fue muy justo."
-              </p>
-            </div>
-            <div class="pt-6 border-t border-slate-100 flex items-center gap-3 mt-6">
-              <div
-                class="w-10 h-10 rounded-full bg-slate-100 text-slate-700 font-bold flex items-center justify-center text-sm">
-                AL
-              </div>
-              <div>
-                <h4 class="font-bold text-sm text-brand-dark">Arq. Alejandro Lara</h4>
-                <p class="text-xs text-slate-400">Cliente Particular</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== CONTACTO ==================== -->
-    <section id="contacto" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="grid lg:grid-cols-12 gap-12">
-
-          <!-- Bloque de Información de Contacto -->
-          <div class="lg:col-span-5 space-y-8">
-            <div>
-              <span class="text-brand-blue font-bold text-sm tracking-wider uppercase">Ponte en Contacto</span>
-              <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight mt-1">
-                ¿Tienes Dudas o Requieres una Cotización?
-              </h2>
-              <p class="text-slate-600 mt-3 leading-relaxed text-sm sm:text-base">
-                Escríbenos o visítanos directamente en nuestras oficinas. Brindamos asesoría personalizada y
-                diagnósticos rápidos para tu tranquilidad.
-              </p>
-            </div>
-
-            <div class="space-y-6">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- FICHA DE INFORMACIÓN INTERACTIVA -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+              
+              <h3 class="text-xl font-bold font-display text-brand-dark border-b border-slate-100 pb-3">
+                Información de Contacto
+              </h3>
 
               <!-- Dirección -->
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h4 class="font-bold text-brand-dark text-sm">Dirección</h4>
-                  <p class="text-sm text-slate-600">Av. Tecnológico #450, Col. Centro, CP 80000</p>
-                  <p class="text-xs text-slate-400 mt-0.5">Estacionamiento propio para clientes</p>
+                  <h4 class="font-bold text-brand-dark text-sm">Dirección Física</h4>
+                  <p class="text-sm text-slate-700 font-medium mt-0.5">Avenida 3 poniente 416</p>
+                  <p class="text-xs text-slate-500">Huatusco, Ver., México</p>
                 </div>
               </div>
 
-              <!-- Teléfono y WhatsApp -->
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              <!-- Teléfono / WhatsApp con botones de acción -->
+              <div class="flex items-start gap-4 pt-2 border-t border-slate-100">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                   </svg>
                 </div>
-                <div>
-                  <h4 class="font-bold text-brand-dark text-sm">Teléfonos & WhatsApp</h4>
-                  <p class="text-sm text-slate-600">Oficina: +52 (667) 712-3456</p>
-                  <p class="text-sm text-slate-600">WhatsApp TI: +52 (667) 987-6543</p>
+                <div class="flex-1 space-y-2">
+                  <h4 class="font-bold text-brand-dark text-sm">Teléfono & WhatsApp</h4>
+                  <p class="text-base text-slate-900 font-extrabold font-display tracking-wide">498-115 2637</p>
+                  
+                  <div class="flex flex-wrap gap-2 pt-1">
+                    <a 
+                      href="https://wa.me/524981152637?text=Hola%20Compubyte,%20deseo%20m%C3%A1s%20informaci%C3%B3n" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm"
+                    >
+                      <span>Abrir WhatsApp</span>
+                    </a>
+                    <a 
+                      href="tel:+524981152637" 
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition"
+                    >
+                      <span>Llamar</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <!-- Correo -->
-              <div class="flex items-start gap-4">
+              <!-- Correo Electrónico -->
+              <div class="flex items-start gap-4 pt-2 border-t border-slate-100">
                 <div class="w-12 h-12 rounded-xl bg-red-50 text-brand-accent flex items-center justify-center shrink-0">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
                   <h4 class="font-bold text-brand-dark text-sm">Correo Electrónico</h4>
-                  <p class="text-sm text-slate-600">contacto@compubyt.com</p>
-                  <p class="text-sm text-slate-600">soporte@compubyt.com</p>
-                </div>
-              </div>
-
-              <!-- Horarios -->
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-bold text-brand-dark text-sm">Horario de Atención</h4>
-                  <p class="text-sm text-slate-600">Lunes a Viernes: 9:00 AM - 7:00 PM</p>
-                  <p class="text-sm text-slate-600">Sábados: 9:00 AM - 2:00 PM</p>
+                  <a href="mailto:contacto@compubyt.com" class="text-sm text-brand-blue font-semibold hover:underline">
+                    contacto@compubyt.com
+                  </a>
+                  <p class="text-xs text-slate-400 mt-0.5">Respuesta en menos de 24 horas</p>
                 </div>
               </div>
 
@@ -941,72 +612,56 @@
 
           </div>
 
-          <!-- Formulario de Contacto -->
-          <div class="lg:col-span-7 bg-brand-surface p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-sm">
-            <form id="contact-form" class="space-y-6">
+          <!-- FORMULARIO DE CONTACTO DIRECTO -->
+          <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+            <h3 class="text-xl font-bold font-display text-brand-dark mb-6">
+              Envíanos un Mensaje
+            </h3>
 
-              <div class="grid sm:grid-cols-2 gap-6">
+            <form id="contact-form" class="space-y-5">
+              
+              <div class="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label for="nombre"
-                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo
-                    *</label>
-                  <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white">
+                  <label for="nombre" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nombre Completo *</label>
+                  <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-slate-50/50 focus:bg-white">
                 </div>
                 <div>
-                  <label for="telefono"
-                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono / WhatsApp
-                    *</label>
-                  <input type="tel" id="telefono" name="telefono" required placeholder="Ej. (667) 123 4567"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white">
+                  <label for="telefono" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Teléfono o WhatsApp *</label>
+                  <input type="tel" id="telefono" name="telefono" required placeholder="Ej. 498 123 4567" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-slate-50/50 focus:bg-white">
                 </div>
               </div>
 
-              <div class="grid sm:grid-cols-2 gap-6">
+              <div class="grid sm:grid-cols-2 gap-5">
                 <div>
-                  <label for="correo"
-                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Correo Electrónico
-                    *</label>
-                  <input type="email" id="correo" name="correo" required placeholder="tu-email@empresa.com"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white">
+                  <label for="correo" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Correo Electrónico *</label>
+                  <input type="email" id="correo" name="correo" required placeholder="tu-email@gmail.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-slate-50/50 focus:bg-white">
                 </div>
                 <div>
-                  <label for="servicio"
-                    class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Servicio de
-                    Interés</label>
-                  <select id="servicio" name="servicio"
-                    class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white">
-                    <option value="mantenimiento">Mantenimiento y Reparación de Equipos</option>
-                    <option value="redes">Redes e Infraestructura IT</option>
-                    <option value="computienda">Computienda POS (Punto de Venta)</option>
-                    <option value="venta">Cotización de Hardware y Laptops</option>
-                    <option value="software">Desarrollo y Licenciamiento de Software</option>
-                    <option value="otro">Otro tipo de consulta</option>
+                  <label for="servicio" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Servicio de Interés</label>
+                  <select id="servicio" name="servicio" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white">
+                    <option value="reparacion">Mantenimiento y Reparación de Computadoras</option>
+                    <option value="computienda">Punto de Venta Computienda POS</option>
+                    <option value="redes">Instalación de Redes y WiFi</option>
+                    <option value="compra">Cotización de Laptops o Componentes</option>
+                    <option value="otro">Otro Requerimiento</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label for="mensaje"
-                  class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Mensaje o Detalle del
-                  Requerimiento *</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required
-                  placeholder="Descríbenos brevemente tu necesidad o el fallo de tus equipos..."
-                  class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-white resize-none"></textarea>
+                <label for="mensaje" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Mensaje o Detalle del Fallo *</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Describe brevemente el problema de tu equipo o lo que necesitas..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none transition text-sm bg-slate-50/50 focus:bg-white resize-none"></textarea>
               </div>
 
-              <button type="submit"
-                class="w-full py-4 rounded-xl font-bold text-white bg-brand-accent hover:bg-brand-accentHover shadow-lg shadow-red-600/25 hover:shadow-xl hover:shadow-red-600/35 transition-all text-base flex items-center justify-center gap-2">
-                <span>Enviar Mensaje de Contacto</span>
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              <button type="submit" class="w-full py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider text-white bg-brand-accent hover:bg-brand-accentHover shadow-glow-red hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                <span>Enviar Mensaje a Compubyte</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
 
-              <div id="form-feedback"
-                class="hidden p-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-sm text-center font-medium">
-                ¡Gracias por escribirnos! Un asesor técnico se comunicará contigo en menos de 15 minutos hábiles.
+              <div id="form-feedback" class="hidden p-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-xs sm:text-sm text-center font-bold">
+                ✓ ¡Mensaje recibido! Nos comunicaremos contigo a la brevedad posible.
               </div>
 
             </form>
@@ -1019,100 +674,80 @@
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-brand-dark text-slate-300 border-t border-slate-800">
+  <footer class="bg-brand-dark text-slate-400 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-
+      
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-
+        
         <!-- Info Marca -->
         <div class="lg:col-span-2 space-y-4">
-          <a href="#inicio" class="flex items-center gap-2">
-            <div
-              class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-blue to-blue-400 flex items-center justify-center text-white font-bold">
-              C
-            </div>
+          <a href="#inicio" class="flex items-center gap-3">
+            <img 
+              src="assets/img/logo.png" 
+              alt="Compubyte" 
+              class="h-9 w-auto max-w-[140px] object-contain brightness-0 invert"
+              onerror="this.style.display='none';"
+            >
             <span class="text-2xl font-extrabold font-display tracking-tight text-white">
               Compu<span class="text-brand-accent">byte</span>
             </span>
           </a>
-          <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
-            Soluciones integrales de cómputo, soporte técnico preventivo y correctivo, venta de hardware y el sistema de
-            punto de venta líder Computienda POS.
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Soluciones informáticas profesionales, mantenimiento preventivo, infraestructura de redes y el sistema de punto de venta Computienda POS en Huatusco, Ver.
           </p>
-          <div class="flex items-center gap-3 pt-2">
-            <!-- Redes Sociales -->
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-              class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors"
-              aria-label="Facebook">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-              </svg>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
-              class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-accent transition-colors"
-              aria-label="Instagram">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-              class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors"
-              aria-label="LinkedIn">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
+          <div class="text-xs text-slate-300 space-y-1 pt-1 font-medium">
+            <p>📍 Avenida 3 poniente 416, Huatusco, Ver.</p>
+            <p>📞 Tel / WhatsApp: <a href="https://wa.me/524981152637" class="hover:text-white underline">498-115 2637</a></p>
+            <p>✉️ <a href="mailto:contacto@compubyt.com" class="hover:text-white underline">contacto@compubyt.com</a></p>
           </div>
         </div>
 
         <!-- Enlaces Rápidos -->
         <div class="space-y-3">
-          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Navegación</h4>
-          <ul class="space-y-2 text-sm text-slate-400">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Navegación</h4>
+          <ul class="space-y-2 text-xs">
             <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
             <li><a href="#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
             <li><a href="#servicios" class="hover:text-white transition-colors">Servicios TI</a></li>
-            <li><a href="#productos" class="hover:text-white transition-colors">Catálogo de Equipos</a></li>
-            <li><a href="#testimonios" class="hover:text-white transition-colors">Opiniones de Clientes</a></li>
+            <li><a href="blog.html" class="hover:text-white transition-colors">Blog y Consejos</a></li>
+            <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
           </ul>
         </div>
 
-        <!-- Soluciones Especiales -->
+        <!-- Software y Soluciones -->
         <div class="space-y-3">
-          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soluciones</h4>
-          <ul class="space-y-2 text-sm text-slate-400">
-            <li><a href="#computienda" class="text-brand-accent font-semibold hover:underline">Computienda POS</a></li>
-            <li><a href="#servicios" class="hover:text-white transition-colors">Mantenimiento Preventivo</a></li>
-            <li><a href="#servicios" class="hover:text-white transition-colors">Instalación de Redes y WiFi</a></li>
-            <li><a href="#servicios" class="hover:text-white transition-colors">Ensamble de Computadoras</a></li>
-            <li><a href="#servicios" class="hover:text-white transition-colors">Pólizas Mensuales TI</a></li>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Software POS</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="./computienda/index.html" class="text-brand-accent font-bold hover:underline">Computienda POS</a></li>
+            <li><a href="./computienda/manual.html" class="hover:text-white transition-colors">Manual del Usuario</a></li>
+            <li><a href="#servicios" class="hover:text-white transition-colors">Kits de Punto de Venta</a></li>
+            <li><a href="#servicios" class="hover:text-white transition-colors">Impresoras y Lectores</a></li>
           </ul>
         </div>
 
-        <!-- Atención -->
+        <!-- Redes Sociales y Soporte -->
         <div class="space-y-3">
-          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soporte Directo</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">
-            ¿Requieres asistencia remota urgente? Contáctanos de inmediato vía WhatsApp.
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Atención Rápida</h4>
+          <p class="text-xs text-slate-400">
+            ¿Requieres asistencia inmediata? Escríbenos directamente a nuestro WhatsApp oficial:
           </p>
-          <a href="#contacto"
-            class="inline-block px-4 py-2 rounded-lg bg-slate-800 text-xs font-semibold text-white hover:bg-slate-700 transition-colors border border-slate-700">
-            Centro de Ayuda
+          <a 
+            href="https://wa.me/524981152637?text=Hola%20Compubyte,%20solicito%20asistencia%20tecnica" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition"
+          >
+            <span>Chat de WhatsApp</span>
           </a>
         </div>
 
       </div>
 
-      <!-- Copyright & Disclaimer -->
-      <div
-        class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
-        <p>&copy; 2026 Compubyte. Todos los derechos reservados.</p>
-        <p class="text-center md:text-right text-[11px] max-w-xl text-slate-400">
-          Nota legal: Todas las marcas, logotipos y nombres de productos comerciales mencionados en este sitio
-          pertenecen a sus respectivos fabricantes y solo se emplean con fines ilustrativos y de compatibilidad.
+      <!-- Copyright y Datos Legales -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Compubyte. Todos los derechos reservados. Huatusco, Ver., México.</p>
+        <p class="text-center md:text-right text-[11px] max-w-md text-slate-500">
+          Compubyte y Computienda POS son marcas dedicadas a la prestación de servicios informáticos y comercialización de software.
         </p>
       </div>
 
@@ -1141,7 +776,6 @@
       }
     });
 
-    // Cerrar menú al hacer clic en cualquier enlace interno
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
@@ -1165,5 +799,4 @@
   </script>
 
 </body>
-
 </html>
