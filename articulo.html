@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cómo Proteger los Datos de tu Negocio frente a Ransomware y Ciberataques | Blog Compubyte</title>
+  <meta name="description" content="Guía práctica y directrices de ciberseguridad para proteger la información de pequeñas y medianas empresas contra ransomware y pérdida de datos.">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              primary: '#1E3A8A',
+              blue: '#2563EB',
+              accent: '#DC2626',
+              accentHover: '#B91C1C',
+              surface: '#F8FAFC',
+              text: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-dark to-brand-blue flex items-center justify-center text-white shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="text-2xl font-extrabold font-display tracking-tight text-brand-dark">
+            Compu<span class="text-brand-accent">byte</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="index.html#inicio" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Inicio</a>
+          <a href="index.html#nosotros" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Sobre Nosotros</a>
+          <a href="index.html#servicios" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Servicios</a>
+          <a href="index.html#productos" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Productos</a>
+          <a href="blog.html" class="text-sm font-bold text-brand-blue border-b-2 border-brand-blue pb-0.5">Blog</a>
+          <a href="index.html#computienda" class="text-sm font-semibold text-brand-blue hover:text-blue-800 transition-colors flex items-center gap-1.5">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+            </span>
+            Computienda POS
+          </a>
+          <a href="index.html#contacto" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Contacto</a>
+        </nav>
+
+        <!-- Action CTA Desktop -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="index.html#computienda" class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-brand-blue bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all">
+            Ver Computienda POS
+          </a>
+          <a href="index.html#contacto" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accentHover shadow-md shadow-red-600/20 hover:shadow-lg transition-all">
+            Cotizar Servicio
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-slate-700 hover:text-brand-dark hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue" aria-label="Abrir menú de navegación">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 transition-all">
+      <a href="index.html#inicio" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Inicio</a>
+      <a href="index.html#nosotros" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Sobre Nosotros</a>
+      <a href="index.html#servicios" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Servicios</a>
+      <a href="index.html#productos" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Productos</a>
+      <a href="blog.html" class="mobile-nav-link block px-3 py-2 rounded-md font-bold text-brand-blue bg-blue-50">Blog de Tecnología</a>
+      <a href="index.html#computienda" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-brand-blue font-semibold">★ Ver Computienda POS</a>
+      <a href="index.html#contacto" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Contacto</a>
+      <div class="pt-4 flex flex-col gap-2">
+        <a href="index.html#contacto" class="mobile-nav-link w-full text-center py-2.5 px-4 rounded-lg bg-brand-accent text-white font-semibold text-sm shadow">Contactar Ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-12">
+    <!-- ==================== BREADCRUMBS ==================== -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+      <nav class="flex items-center text-xs text-slate-500 gap-2">
+        <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="blog.html" class="hover:text-brand-blue transition-colors">Blog</a>
+        <span>/</span>
+        <span class="text-brand-dark font-medium truncate max-w-xs sm:max-w-md">Cómo Proteger los Datos de tu Negocio</span>
+      </nav>
+    </div>
+
+    <!-- ==================== ENCABEZADO DEL ARTÍCULO ==================== -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <header class="space-y-6 pb-10 border-b border-slate-200">
+        
+        <!-- Categoría & Badge -->
+        <div class="flex items-center gap-3">
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-brand-blue text-xs font-bold uppercase tracking-wider">
+            Soporte & Ciberseguridad
+          </span>
+          <span class="text-xs text-slate-400 font-medium">Guía Profesional</span>
+        </div>
+
+        <!-- Título Principal -->
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-brand-dark leading-[1.2]">
+          Cómo Proteger los Datos de tu Negocio frente a Ransomware y Ciberataques en 2026
+        </h1>
+
+        <!-- Metadatos: Autor, Fecha y Tiempo de Lectura -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+          
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-dark to-brand-blue flex items-center justify-center text-white font-bold font-display text-base shadow-sm">
+              IC
+            </div>
+            <div>
+              <p class="text-sm font-bold text-brand-dark">Ing. Carlos Meza</p>
+              <p class="text-xs text-slate-400">Especialista Senior en Infraestructura y Redes TI</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs text-slate-500 font-medium bg-white px-4 py-2 rounded-xl border border-slate-200/80 shadow-sm">
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <time datetime="2026-09-20">20 de Septiembre, 2026</time>
+            </div>
+            <span>•</span>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>5 minutos de lectura</span>
+            </div>
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- ==================== CONTENIDO DEL ARTÍCULO (TYPOGRAPHY) ==================== -->
+      <div class="py-10 space-y-8 text-slate-700 leading-relaxed text-base sm:text-lg">
+        
+        <!-- Párrafo introductorio destacado -->
+        <p class="text-lg sm:text-xl text-slate-800 font-medium leading-relaxed">
+          En los últimos años, el secuestro de información (<em class="text-brand-blue not-italic font-semibold">ransomware</em>) ha dejado de ser una amenaza exclusiva de corporaciones multinacionales. Hoy en día, más del <strong>60% de los incidentes</strong> afectan directamente a pequeñas y medianas empresas locales debido a brechas básicas de seguridad en routers, correos apócrifos y la carencia de una política estricta de respaldos.
+        </p>
+
+        <!-- Sección H2 -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark tracking-tight pt-4">
+          1. La Regla de Oro: Estrategia de Respaldo 3-2-1
+        </h2>
+
+        <p>
+          Ningún antivirus es 100% infalible ante ataques de día cero o descuidos humanos. Por ello, la línea de defensa más contundente para evitar pagar rescates extorsivos es contar con copias de seguridad inalterables. En <strong>Compubyte</strong> implementamos el estándar de la industria denominado <strong>Estrategia 3-2-1</strong>:
+        </p>
+
+        <!-- Lista Estilizada -->
+        <ul class="space-y-4 my-6 bg-white p-6 rounded-2xl border border-slate-200">
+          <li class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">3</span>
+            <div>
+              <strong class="text-brand-dark">Tener al menos 3 copias de tus datos:</strong>
+              <p class="text-sm text-slate-600 mt-0.5">Los datos de producción diaria más dos copias de seguridad independientes.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">2</span>
+            <div>
+              <strong class="text-brand-dark">Almacenarlas en 2 medios distintos:</strong>
+              <p class="text-sm text-slate-600 mt-0.5">Por ejemplo, un servidor de almacenamiento NAS local y un disco duro externo desconectado.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-7 h-7 rounded-lg bg-red-100 text-brand-accent flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">1</span>
+            <div>
+              <strong class="text-brand-dark">Guardar al menos 1 copia fuera de tus instalaciones (Off-site / Nube):</strong>
+              <p class="text-sm text-slate-600 mt-0.5">Para resistir siniestros físicos como inundaciones, incendios o robo de equipamiento.</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Sección H2 -->
+        <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark tracking-tight pt-4">
+          2. Automatización y Verificación de Integridad
+        </h2>
+
+        <p>
+          Un error muy recurrente en oficinas es confiar en que un empleado recordará conectar la memoria USB para hacer respaldo manual cada viernes. La disciplina humana falla; los scripts y servicios automatizados, no.
+        </p>
+
+        <p>
+          A continuación mostramos un ejemplo conceptual de rutina mediante <code>PowerShell</code> para sincronizar y aislar carpetas críticas de un sistema como Computienda POS hacia una unidad de respaldo cifrada:
+        </p>
+
+        <!-- Bloque de Código -->
+        <div class="rounded-2xl bg-brand-dark text-slate-200 p-5 font-mono text-xs sm:text-sm border border-slate-800 shadow-xl overflow-x-auto">
+          <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-xs text-slate-400">
+            <span>powershell — backup-pos-task.ps1</span>
+            <span class="text-emerald-400 font-semibold">Integridad SHA-256</span>
+          </div>
+          <pre class="leading-relaxed"><code><span class="text-slate-500"># Compubyte Automated Backup Utility</span>
+$SourceDir = <span class="text-amber-300">"C:\ComputiendaPOS\Data"</span>
+$DestinationDir = <span class="text-amber-300">"\\192.168.1.50\SecureBackup$\Data_"</span> + (Get-Date -Format <span class="text-amber-300">"yyyy-MM-dd"</span>)
+
+<span class="text-blue-400">Write-Output</span> <span class="text-green-300">"Iniciando respaldo seguro de base de datos..."</span>
+<span class="text-blue-400">Robocopy</span> $SourceDir $DestinationDir /MIR /R:2 /W:5 /LOG:<span class="text-amber-300">"C:\Logs\backup.log"</span>
+
+<span class="text-slate-500"># Verificación de suma de comprobación</span>
+$Hash = <span class="text-blue-400">Get-FileHash</span> -Path <span class="text-amber-300">"$DestinationDir\pos_main.db"</span> -Algorithm SHA256
+<span class="text-blue-400">Write-Output</span> <span class="text-green-300">"Respaldo completado. Checksum: $($Hash.Hash)"</span></code></pre>
+        </div>
+
+        <!-- Callout Alert / Consejo -->
+        <div class="p-6 rounded-2xl bg-blue-50 border-l-4 border-brand-blue flex items-start gap-4 my-6">
+          <div class="text-brand-blue text-2xl font-bold shrink-0">ℹ</div>
+          <div>
+            <h4 class="font-bold text-brand-dark text-base">Consejo Técnico de Compubyte</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              "Un respaldo que no ha sido probado para restaurarse no es un respaldo, es solo una ilusión". Recomendamos realizar simulacros de restauración trimestralmente para garantizar que la copia de seguridad no esté dañada.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sección H3 -->
+        <h3 class="text-xl sm:text-2xl font-bold font-display text-brand-dark tracking-tight pt-2">
+          3. Protección de Red y Segmentación de Dispositivos
+        </h3>
+
+        <p>
+          Muchas veces el vector de entrada es el teléfono celular de un visitante conectado a la misma red WiFi donde opera la computadora que controla las transferencias bancarias o el inventario del negocio.
+        </p>
+
+        <!-- Bloque de Cita (Blockquote) -->
+        <blockquote class="border-l-4 border-brand-accent pl-6 py-2 italic text-slate-800 text-lg sm:text-xl font-medium my-6 bg-red-50/40 rounded-r-2xl">
+          "Separar la red de invitados de la red operativa mediante VLANs reduce en más de un 80% la posibilidad de que una infección se propague hacia los servidores de la empresa."
+        </blockquote>
+
+        <p>
+          Para mantener blindado tu negocio, asegúrate de aplicar estos 4 puntos indispensables:
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 my-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <h5 class="font-bold text-sm text-brand-dark mb-1">🔐 Autenticación de Dos Pasos (2FA)</h5>
+            <p class="text-xs text-slate-500">Obligatorio en correos empresariales, paneles de hosting y cuentas de acceso remoto.</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <h5 class="font-bold text-sm text-brand-dark mb-1">🚫 No Usar Cuentas Administrador</h5>
+            <p class="text-xs text-slate-500">Los usuarios de caja u oficina deben operar con permisos estándar sin privilegios de instalación.</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <h5 class="font-bold text-sm text-brand-dark mb-1">🔄 Parches del Sistema</h5>
+            <p class="text-xs text-slate-500">Mantener Windows, navegadores y firmware de routers actualizados a la versión más reciente.</p>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200">
+            <h5 class="font-bold text-sm text-brand-dark mb-1">🛡️ Antivirus Corporativo Centralizado</h5>
+            <p class="text-xs text-slate-500">Con monitoreo de comportamiento capaz de congelar procesos maliciosos de cifrado.</p>
+          </div>
+        </div>
+
+        <p>
+          Si no cuentas con personal especializado en tu empresa para auditar tu red y configurar respaldos inmutables, en <strong>Compubyte</strong> contamos con pólizas de mantenimiento y auditorías preventivas sin costo inicial.
+        </p>
+
+      </div>
+
+      <!-- ==================== COMPARTIR EN REDES ==================== -->
+      <div class="py-8 border-y border-slate-200 my-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-sm font-bold text-brand-dark">¿Te resultó útil? Comparte este artículo:</span>
+        
+        <div class="flex items-center gap-3">
+          <!-- WhatsApp -->
+          <a href="https://api.whatsapp.com/send?text=Mira%20este%20articulo%20de%20Compubyte" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white transition-all text-xs font-bold border border-emerald-200 shadow-sm" aria-label="Compartir en WhatsApp">
+            <span>WhatsApp</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-50 text-brand-blue hover:bg-brand-blue hover:text-white transition-all text-xs font-bold border border-blue-200 shadow-sm" aria-label="Compartir en LinkedIn">
+            <span>LinkedIn</span>
+          </a>
+
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-800 hover:text-white transition-all text-xs font-bold border border-slate-200 shadow-sm" aria-label="Compartir en Facebook">
+            <span>Facebook</span>
+          </a>
+
+          <!-- Copiar enlace -->
+          <button id="copy-link-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-brand-dark hover:text-white transition-all text-xs font-bold border border-slate-200 shadow-sm">
+            <span>Copiar Enlace</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Toast Feedback Copia -->
+      <div id="copy-toast" class="hidden fixed bottom-6 right-6 bg-brand-dark text-white px-5 py-3 rounded-2xl shadow-2xl text-xs font-bold flex items-center gap-2 z-50 border border-slate-700">
+        <span class="text-green-400">✓</span> ¡Enlace copiado al portapapeles!
+      </div>
+
+      <!-- ==================== CAJA DEL AUTOR ==================== -->
+      <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm my-12 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-dark via-blue-900 to-brand-blue flex items-center justify-center text-white font-extrabold text-2xl font-display shadow-lg shrink-0">
+          IC
+        </div>
+        <div class="space-y-3 text-center sm:text-left">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-lg font-bold font-display text-brand-dark">Ing. Carlos Meza</h4>
+            <span class="text-xs font-semibold text-brand-blue bg-blue-50 px-2.5 py-0.5 rounded-full inline-block sm:inline">Líder de Soporte en Compubyte</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Ingeniero en Sistemas con más de 12 años diseñando infraestructura de redes de alta disponibilidad, servidores Windows/Linux y recuperación forense de datos para el sector comercial.
+          </p>
+          <div class="flex items-center justify-center sm:justify-start gap-4 text-xs font-bold text-brand-accent">
+            <a href="index.html#contacto" class="hover:underline">Consultar con Carlos →</a>
+          </div>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- ==================== ARTÍCULOS RELACIONADOS ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+      <div class="border-t border-slate-200/80 pt-12">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-brand-accent font-bold text-xs uppercase tracking-wider">Continúa Leyendo</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold font-display text-brand-dark tracking-tight">Artículos Relacionados</h3>
+          </div>
+          <a href="blog.html" class="text-xs font-bold text-brand-blue hover:underline">Ver todos los artículos →</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- Relacionado 1 -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all group flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-brand-blue uppercase">Mantenimiento</span>
+              <h4 class="text-base font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors mt-2 mb-2 leading-snug">
+                ¿Por qué tu Computadora se Calienta y se Vuelve Lenta?
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Aprende cómo la pasta térmica seca reduce la vida útil de tus procesadores y cómo prevenirlo.
+              </p>
+            </div>
+            <a href="articulo.html" class="text-xs font-bold text-brand-accent mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Leer guía →
+            </a>
+          </div>
+
+          <!-- Relacionado 2 -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all group flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-brand-blue uppercase">Redes</span>
+              <h4 class="text-base font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors mt-2 mb-2 leading-snug">
+                Guía de Cableado Estructurado vs. Redes Mesh en Oficinas
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Elige la arquitectura adecuada para evitar microcortes en llamadas y servidores.
+              </p>
+            </div>
+            <a href="articulo.html" class="text-xs font-bold text-brand-accent mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Leer guía →
+            </a>
+          </div>
+
+          <!-- Relacionado 3 -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition-all group flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-brand-blue uppercase">Software & POS</span>
+              <h4 class="text-base font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors mt-2 mb-2 leading-snug">
+                Ventajas de Implementar Computienda POS en la Nube
+              </h4>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Controla ventas en vivo desde cualquier lugar sin pérdida de información por cortes eléctricos.
+              </p>
+            </div>
+            <a href="articulo.html" class="text-xs font-bold text-brand-accent mt-4 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Leer guía →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-brand-dark text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Info Marca -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-blue to-blue-400 flex items-center justify-center text-white font-bold">
+              C
+            </div>
+            <span class="text-2xl font-extrabold font-display tracking-tight text-white">
+              Compu<span class="text-brand-accent">byte</span>
+            </span>
+          </a>
+          <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+            Soluciones integrales de cómputo, soporte técnico preventivo y correctivo, venta de hardware y el sistema de punto de venta líder Computienda POS.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <!-- Redes Sociales -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-accent transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Navegación</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="index.html#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios TI</a></li>
+            <li><a href="index.html#productos" class="hover:text-white transition-colors">Catálogo de Equipos</a></li>
+            <li><a href="blog.html" class="text-brand-blue font-semibold hover:underline">Blog de Tecnología</a></li>
+          </ul>
+        </div>
+
+        <!-- Soluciones Especiales -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soluciones</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="index.html#computienda" class="text-brand-accent font-semibold hover:underline">Computienda POS</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Mantenimiento Preventivo</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Instalación de Redes y WiFi</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Ensamble de Computadoras</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Pólizas Mensuales TI</a></li>
+          </ul>
+        </div>
+
+        <!-- Atención -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soporte Directo</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            ¿Requieres asistencia remota urgente? Contáctanos de inmediato vía WhatsApp.
+          </p>
+          <a href="index.html#contacto" class="inline-block px-4 py-2 rounded-lg bg-slate-800 text-xs font-semibold text-white hover:bg-slate-700 transition-colors border border-slate-700">
+            Centro de Ayuda
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Disclaimer -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Compubyte. Todos los derechos reservados.</p>
+        <p class="text-center md:text-right text-[11px] max-w-xl text-slate-400">
+          Nota legal: Todas las marcas, logotipos y nombres de productos comerciales mencionados en este sitio pertenecen a sus respectivos fabricantes y solo se emplean con fines ilustrativos y de compatibilidad.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Menu Hamburguesa Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    });
+
+    // Copiar enlace al portapapeles
+    const copyBtn = document.getElementById('copy-link-btn');
+    const copyToast = document.getElementById('copy-toast');
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        copyToast.classList.remove('hidden');
+        setTimeout(() => {
+          copyToast.classList.add('hidden');
+        }, 3000);
+      }).catch(() => {
+        alert('Enlace copiado: ' + window.location.href);
+      });
+    });
+  </script>
+
+</body>
+</html>

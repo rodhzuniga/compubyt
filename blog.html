@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog de Tecnología y Consejos TI | Compubyte</title>
+  <meta name="description" content="Artículos, guías, tutoriales y novedades sobre soporte técnico, mantenimiento de computadoras, redes, software empresarial y puntos de venta.">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              primary: '#1E3A8A',
+              blue: '#2563EB',
+              accent: '#DC2626',
+              accentHover: '#B91C1C',
+              surface: '#F8FAFC',
+              text: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-dark to-brand-blue flex items-center justify-center text-white shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="text-2xl font-extrabold font-display tracking-tight text-brand-dark">
+            Compu<span class="text-brand-accent">byte</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="index.html#inicio" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Inicio</a>
+          <a href="index.html#nosotros" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Sobre Nosotros</a>
+          <a href="index.html#servicios" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Servicios</a>
+          <a href="index.html#productos" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Productos</a>
+          <a href="blog.html" class="text-sm font-bold text-brand-blue border-b-2 border-brand-blue pb-0.5">Blog</a>
+          <a href="index.html#computienda" class="text-sm font-semibold text-brand-blue hover:text-blue-800 transition-colors flex items-center gap-1.5">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+            </span>
+            Computienda POS
+          </a>
+          <a href="index.html#contacto" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Contacto</a>
+        </nav>
+
+        <!-- Action CTA Desktop -->
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="index.html#computienda" class="inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-xs uppercase tracking-wider font-bold text-brand-blue bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all">
+            Ver Computienda POS
+          </a>
+          <a href="index.html#contacto" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand-accent hover:bg-brand-accentHover shadow-md shadow-red-600/20 hover:shadow-lg transition-all">
+            Cotizar Servicio
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-slate-700 hover:text-brand-dark hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue" aria-label="Abrir menú de navegación">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 transition-all">
+      <a href="index.html#inicio" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Inicio</a>
+      <a href="index.html#nosotros" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Sobre Nosotros</a>
+      <a href="index.html#servicios" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Servicios</a>
+      <a href="index.html#productos" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Productos</a>
+      <a href="blog.html" class="mobile-nav-link block px-3 py-2 rounded-md font-bold text-brand-blue bg-blue-50">Blog de Tecnología</a>
+      <a href="index.html#computienda" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-brand-blue font-semibold">★ Ver Computienda POS</a>
+      <a href="index.html#contacto" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Contacto</a>
+      <div class="pt-4 flex flex-col gap-2">
+        <a href="index.html#contacto" class="mobile-nav-link w-full text-center py-2.5 px-4 rounded-lg bg-brand-accent text-white font-semibold text-sm shadow">Contactar Ahora</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== BLOG HERO HEADER & FILTROS ==================== -->
+    <section class="relative bg-gradient-to-b from-white via-slate-50 to-brand-surface pt-12 pb-14 border-b border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-brand-blue text-xs font-semibold tracking-wide uppercase">
+            <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
+            Actualidad, Consejos y Tecnología
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-brand-dark">
+            Blog & Recursos <span class="bg-gradient-to-r from-brand-blue to-blue-700 bg-clip-text text-transparent">Compubyte</span>
+          </h1>
+          <p class="text-slate-600 text-base sm:text-lg">
+            Aprende a proteger tus equipos, optimizar tus redes empresariales y elegir el mejor software para tu negocio.
+          </p>
+
+          <!-- Buscador de Artículos -->
+          <div class="pt-4 max-w-xl mx-auto">
+            <div class="relative">
+              <input type="text" id="blog-search" placeholder="Buscar por tema (ej. WiFi, discos SSD, respaldos...)" class="w-full pl-12 pr-4 py-3.5 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-brand-blue focus:border-brand-blue bg-white shadow-sm outline-none text-sm transition">
+              <svg class="w-5 h-5 text-slate-400 absolute left-4 top-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Filtros de Categoría -->
+          <div class="flex flex-wrap justify-center items-center gap-2 pt-4">
+            <button class="filter-btn active px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition bg-brand-dark text-white shadow-sm" data-category="all">
+              Todos
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition bg-white text-slate-600 border border-slate-200 hover:border-brand-blue hover:text-brand-blue" data-category="soporte">
+              Soporte Técnico
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition bg-white text-slate-600 border border-slate-200 hover:border-brand-blue hover:text-brand-blue" data-category="mantenimiento">
+              Mantenimiento
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition bg-white text-slate-600 border border-slate-200 hover:border-brand-blue hover:text-brand-blue" data-category="redes">
+              Redes
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition bg-white text-slate-600 border border-slate-200 hover:border-brand-blue hover:text-brand-blue" data-category="software">
+              Software
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CONTENIDO PRINCIPAL: GRID & SIDEBAR ==================== -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-12 gap-10">
+          
+          <!-- LISTADO DE ARTÍCULOS (8 COLS) -->
+          <div class="lg:col-span-8 space-y-8" id="articles-container">
+            
+            <!-- Entrada 1 (Destacada) -->
+            <article class="blog-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="soporte">
+              <div class="grid sm:grid-cols-12 gap-0">
+                <div class="sm:col-span-5 bg-slate-900 relative overflow-hidden flex items-center justify-center min-h-[220px]">
+                  <div class="absolute inset-0 bg-gradient-to-tr from-brand-dark via-blue-950 to-brand-blue opacity-90"></div>
+                  <!-- Tech Vector Graphic -->
+                  <div class="relative z-10 p-6 text-center text-white">
+                    <svg class="w-16 h-16 mx-auto text-blue-400 mb-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <span class="text-xs font-mono text-blue-200">Seguridad TI</span>
+                  </div>
+                  <span class="absolute top-3 left-3 bg-brand-accent text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                    Destacado
+                  </span>
+                </div>
+                <div class="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-3 text-xs text-slate-400 mb-2">
+                      <span class="font-bold text-brand-blue uppercase">Soporte</span>
+                      <span>•</span>
+                      <time datetime="2026-09-20">20 Sep, 2026</time>
+                      <span>•</span>
+                      <span>5 min lectura</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors leading-snug mb-3">
+                      <a href="articulo.html">Cómo Proteger los Datos de tu Negocio frente a Ransomware y Ciberataques</a>
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                      Estrategias esenciales de copias de seguridad híbridas 3-2-1, filtros de correo malicioso y mejores prácticas para blindar la información sensible de tu empresa.
+                    </p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">IC</div>
+                      <span class="text-xs text-slate-500 font-medium">Ing. Carlos Meza</span>
+                    </div>
+                    <a href="articulo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent hover:text-brand-accentHover">
+                      Leer más
+                      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Entrada 2 -->
+            <article class="blog-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="mantenimiento">
+              <div class="grid sm:grid-cols-12 gap-0">
+                <div class="sm:col-span-5 bg-slate-900 relative overflow-hidden flex items-center justify-center min-h-[220px]">
+                  <div class="absolute inset-0 bg-gradient-to-tr from-slate-900 via-slate-800 to-brand-primary opacity-90"></div>
+                  <div class="relative z-10 p-6 text-center text-white">
+                    <svg class="w-16 h-16 mx-auto text-amber-400 mb-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    </svg>
+                    <span class="text-xs font-mono text-slate-300">Hardware & Rendimiento</span>
+                  </div>
+                </div>
+                <div class="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-3 text-xs text-slate-400 mb-2">
+                      <span class="font-bold text-brand-blue uppercase">Mantenimiento</span>
+                      <span>•</span>
+                      <time datetime="2026-09-14">14 Sep, 2026</time>
+                      <span>•</span>
+                      <span>4 min lectura</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors leading-snug mb-3">
+                      <a href="articulo.html">¿Por qué tu Computadora se Calienta y se Vuelve Lenta? Causas y Solución</a>
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                      Descubre la importancia del cambio periódico de pasta térmica, la limpieza de ventiladores y cuándo conviene migrar a discos de estado sólido NVMe.
+                    </p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">LV</div>
+                      <span class="text-xs text-slate-500 font-medium">Lic. Valeria Soto</span>
+                    </div>
+                    <a href="articulo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent hover:text-brand-accentHover">
+                      Leer más
+                      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Entrada 3 -->
+            <article class="blog-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="redes">
+              <div class="grid sm:grid-cols-12 gap-0">
+                <div class="sm:col-span-5 bg-slate-900 relative overflow-hidden flex items-center justify-center min-h-[220px]">
+                  <div class="absolute inset-0 bg-gradient-to-tr from-brand-dark via-slate-900 to-blue-900 opacity-90"></div>
+                  <div class="relative z-10 p-6 text-center text-white">
+                    <svg class="w-16 h-16 mx-auto text-emerald-400 mb-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                    </svg>
+                    <span class="text-xs font-mono text-emerald-200">WiFi Empresarial</span>
+                  </div>
+                </div>
+                <div class="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-3 text-xs text-slate-400 mb-2">
+                      <span class="font-bold text-brand-blue uppercase">Redes</span>
+                      <span>•</span>
+                      <time datetime="2026-09-08">08 Sep, 2026</time>
+                      <span>•</span>
+                      <span>6 min lectura</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors leading-snug mb-3">
+                      <a href="articulo.html">Guía de Cableado Estructurado vs. Redes Mesh en Oficinas y Locales</a>
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                      Comparativa técnica entre enlaces por cable ethernet Cat6 y soluciones inalámbricas unificadas. Conoce cuál conviene según la carga de trabajo de tu empresa.
+                    </p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">IC</div>
+                      <span class="text-xs text-slate-500 font-medium">Ing. Carlos Meza</span>
+                    </div>
+                    <a href="articulo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent hover:text-brand-accentHover">
+                      Leer más
+                      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Entrada 4 -->
+            <article class="blog-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group" data-category="software">
+              <div class="grid sm:grid-cols-12 gap-0">
+                <div class="sm:col-span-5 bg-slate-900 relative overflow-hidden flex items-center justify-center min-h-[220px]">
+                  <div class="absolute inset-0 bg-gradient-to-tr from-brand-dark via-red-950 to-brand-accent opacity-90"></div>
+                  <div class="relative z-10 p-6 text-center text-white">
+                    <svg class="w-16 h-16 mx-auto text-red-200 mb-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class="text-xs font-mono text-red-100">Gestión de Negocios</span>
+                  </div>
+                </div>
+                <div class="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-3 text-xs text-slate-400 mb-2">
+                      <span class="font-bold text-brand-blue uppercase">Software</span>
+                      <span>•</span>
+                      <time datetime="2026-08-29">29 Ago, 2026</time>
+                      <span>•</span>
+                      <span>5 min lectura</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark group-hover:text-brand-blue transition-colors leading-snug mb-3">
+                      <a href="articulo.html">Ventajas de Implementar un Punto de Venta en la Nube vs. Sistema Local</a>
+                    </h2>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                      ¿Qué sistema conviene más a tu tienda o minisúper? Analizamos cortes de luz, reportes en tu celular y control de mermas con Computienda POS.
+                    </p>
+                  </div>
+                  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <div class="w-7 h-7 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-700">LV</div>
+                      <span class="text-xs text-slate-500 font-medium">Lic. Valeria Soto</span>
+                    </div>
+                    <a href="articulo.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-accent hover:text-brand-accentHover">
+                      Leer más
+                      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- SIDEBAR DERECHO (4 COLS) -->
+          <aside class="lg:col-span-4 space-y-8">
+            
+            <!-- WIDGET 1: BOLETÍN DE SUSCRIPCIÓN -->
+            <div class="bg-gradient-to-br from-brand-dark to-slate-900 text-white rounded-3xl p-7 border border-slate-800 shadow-xl relative overflow-hidden">
+              <div class="absolute -right-10 -bottom-10 w-36 h-36 bg-brand-accent/20 rounded-full blur-2xl"></div>
+              
+              <div class="relative z-10 space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-red-600/20 text-brand-accent flex items-center justify-center font-bold">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold font-display text-white">Suscríbete al Boletín TI</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Recibe guías prácticas mensuales, alertas de vulnerabilidades y promociones exclusivas en servicio técnico y licencias.
+                </p>
+
+                <form id="newsletter-form" class="space-y-3 pt-2">
+                  <input type="email" required placeholder="tu-correo@empresa.com" class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-400 text-xs focus:ring-2 focus:ring-brand-blue outline-none transition">
+                  <button type="submit" class="w-full py-3 rounded-xl bg-brand-accent hover:bg-brand-accentHover font-bold text-xs uppercase tracking-wider text-white shadow-md shadow-red-600/30 transition-all">
+                    Suscribirme Gratis
+                  </button>
+                  <p id="newsletter-success" class="hidden text-xs text-green-400 text-center font-medium">
+                    ✓ ¡Suscripción confirmada con éxito!
+                  </p>
+                </form>
+              </div>
+            </div>
+
+            <!-- WIDGET 2: REDES SOCIALES OFICIALES @COMPUBYTE -->
+            <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm space-y-5">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-base font-bold font-display text-brand-dark">Comunidad @compubyte</h3>
+                <span class="text-[11px] font-bold text-brand-blue bg-blue-50 px-2 py-0.5 rounded-full">Oficial</span>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Síguenos en nuestras plataformas digitales para ver diagnósticos en vivo, tips rápidos y unboxings de hardware:
+              </p>
+
+              <div class="space-y-3">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200/70 hover:border-blue-200 transition group">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm font-bold shadow-sm">
+                      f
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold text-brand-dark group-hover:text-brand-blue">Facebook</p>
+                      <p class="text-[11px] text-slate-400">@compubyte.oficial</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-semibold text-brand-blue group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-red-50 border border-slate-200/70 hover:border-red-200 transition group">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white flex items-center justify-center text-sm font-bold shadow-sm">
+                      ig
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold text-brand-dark group-hover:text-brand-accent">Instagram</p>
+                      <p class="text-[11px] text-slate-400">@compubyte.mx</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-semibold text-brand-accent group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200/70 hover:border-blue-200 transition group">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-slate-800 text-white flex items-center justify-center text-sm font-bold shadow-sm">
+                      in
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold text-brand-dark group-hover:text-brand-blue">LinkedIn</p>
+                      <p class="text-[11px] text-slate-400">Compubyte Soluciones TI</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-semibold text-brand-blue group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+
+                <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3 rounded-xl bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-200 transition group">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-bold shadow-sm">
+                      W
+                    </div>
+                    <div>
+                      <p class="text-xs font-bold text-emerald-900">Canal WhatsApp TI</p>
+                      <p class="text-[11px] text-emerald-700">Noticias y soporte rápido</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-700 group-hover:translate-x-1 transition-transform">Unirme</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- WIDGET 3: BANNER POS COMPUTIENDA -->
+            <div class="bg-blue-50 rounded-3xl p-6 border border-blue-200 text-center space-y-4">
+              <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue bg-white px-3 py-1 rounded-full border border-blue-200">
+                Punto de Venta
+              </span>
+              <h4 class="text-lg font-bold font-display text-brand-dark">¿Tienes comercio o abarrotes?</h4>
+              <p class="text-xs text-slate-600">
+                Controla ventas e inventarios con Computienda POS. Paquetes desde $4,650 MXN con lector e impresora térmica.
+              </p>
+              <a href="index.html#computienda" class="inline-block w-full py-2.5 px-4 rounded-xl bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider transition shadow">
+                Ver Más Detalles
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-brand-dark text-slate-300 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Info Marca -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-blue to-blue-400 flex items-center justify-center text-white font-bold">
+              C
+            </div>
+            <span class="text-2xl font-extrabold font-display tracking-tight text-white">
+              Compu<span class="text-brand-accent">byte</span>
+            </span>
+          </a>
+          <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+            Soluciones integrales de cómputo, soporte técnico preventivo y correctivo, venta de hardware y el sistema de punto de venta líder Computienda POS.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <!-- Redes Sociales -->
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors" aria-label="Facebook">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-accent transition-colors" aria-label="Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-blue transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Navegación</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="index.html#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios TI</a></li>
+            <li><a href="index.html#productos" class="hover:text-white transition-colors">Catálogo de Equipos</a></li>
+            <li><a href="blog.html" class="text-brand-blue font-semibold hover:underline">Blog de Tecnología</a></li>
+          </ul>
+        </div>
+
+        <!-- Soluciones Especiales -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soluciones</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="index.html#computienda" class="text-brand-accent font-semibold hover:underline">Computienda POS</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Mantenimiento Preventivo</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Instalación de Redes y WiFi</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Ensamble de Computadoras</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Pólizas Mensuales TI</a></li>
+          </ul>
+        </div>
+
+        <!-- Atención -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-white font-display">Soporte Directo</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            ¿Requieres asistencia remota urgente? Contáctanos de inmediato vía WhatsApp.
+          </p>
+          <a href="index.html#contacto" class="inline-block px-4 py-2 rounded-lg bg-slate-800 text-xs font-semibold text-white hover:bg-slate-700 transition-colors border border-slate-700">
+            Centro de Ayuda
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Disclaimer -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <p>&copy; 2026 Compubyte. Todos los derechos reservados.</p>
+        <p class="text-center md:text-right text-[11px] max-w-xl text-slate-400">
+          Nota legal: Todas las marcas, logotipos y nombres de productos comerciales mencionados en este sitio pertenecen a sus respectivos fabricantes y solo se emplean con fines ilustrativos y de compatibilidad.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Menu Hamburguesa Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      if (isExpanded) {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    });
+
+    // Filtros de Categorías del Blog
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const searchInput = document.getElementById('blog-search');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-brand-dark', 'text-white');
+          b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        });
+        btn.classList.add('active', 'bg-brand-dark', 'text-white');
+        btn.classList.remove('bg-white', 'text-slate-600', 'border');
+
+        const category = btn.getAttribute('data-category');
+        filterArticles(category, searchInput.value.toLowerCase().trim());
+      });
+    });
+
+    // Búsqueda en tiempo real
+    searchInput.addEventListener('input', (e) => {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      const category = activeBtn ? activeBtn.getAttribute('data-category') : 'all';
+      filterArticles(category, e.target.value.toLowerCase().trim());
+    });
+
+    function filterArticles(category, query) {
+      blogCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        const cardTitle = card.querySelector('h2').innerText.toLowerCase();
+        const cardExcerpt = card.querySelector('p').innerText.toLowerCase();
+
+        const matchesCat = (category === 'all' || cardCategory === category);
+        const matchesQuery = query === '' || cardTitle.includes(query) || cardExcerpt.includes(query);
+
+        if (matchesCat && matchesQuery) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // Formulario de Newsletter
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterSuccess = document.getElementById('newsletter-success');
+
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      newsletterSuccess.classList.remove('hidden');
+      newsletterForm.querySelector('input').value = '';
+    });
+  </script>
+
+</body>
+</html>
