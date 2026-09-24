@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual de Usuario Oficial | Computienda POS</title>
+  <meta name="description" content="Guía completa y documentación oficial de Computienda POS: Instalación, configuración de tickets e impresoras, operaciones diarias, inventario y cortes de caja.">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              primary: '#1E3A8A',
+              blue: '#2563EB',
+              blueLight: '#EFF6FF',
+              accent: '#DC2626',
+              accentHover: '#B91C1C',
+              surface: '#F8FAFC',
+              sidebar: '#F1F5F9',
+              text: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+  <!-- ==================== TOP NAVIGATION / DOCS HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 h-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4">
+      
+      <!-- Brand & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <button id="toggle-sidebar-mobile" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Abrir índice del manual">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:bg-blue-700 transition">
+            C
+          </div>
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-xl font-extrabold font-display tracking-tight text-brand-dark">
+              Compu<span class="text-brand-accent">tienda</span>
+            </span>
+            <span class="text-xs font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">Docs v4.5</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Search Bar (Simulated) -->
+      <div class="hidden sm:flex flex-1 max-w-md mx-4">
+        <div class="relative w-full">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="docs-search" placeholder="Buscar en la documentación (ej. corte de caja, ticket, scanner...)" class="w-full pl-10 pr-12 py-2 text-xs rounded-xl bg-slate-100 border border-transparent focus:bg-white focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none transition">
+          <span class="absolute right-3 top-2.5 text-[10px] font-mono text-slate-400 bg-slate-200/80 px-1.5 py-0.5 rounded">Ctrl + K</span>
+        </div>
+      </div>
+
+      <!-- Right Links -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="text-xs font-bold text-slate-600 hover:text-brand-blue transition hidden sm:inline-flex items-center gap-1">
+          <span>Sitio Computienda</span>
+          <span>↗</span>
+        </a>
+        <a href="../index.html" class="text-xs font-bold text-brand-blue bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-200 transition">
+          Volver a Compubyte
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MAIN LAYOUT (SIDEBAR + CONTENT) ==================== -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex gap-8">
+      
+      <!-- ==================== SIDEBAR FIJO (ESCRITORIO) ==================== -->
+      <aside id="docs-sidebar" class="fixed inset-y-0 left-0 top-16 z-30 w-72 bg-white border-r border-slate-200 p-6 overflow-y-auto transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)]">
+        
+        <div class="space-y-8 text-xs">
+          
+          <!-- Sección 1 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">🚀</span> Inicio Rápido
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#requisitos" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Requisitos del Sistema</a></li>
+              <li><a href="#instalacion" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Instalación Paso a Paso</a></li>
+              <li><a href="#primer-inicio" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Primer Inicio y Activación</a></li>
+            </ul>
+          </div>
+
+          <!-- Sección 2 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">⚙️</span> Configuración
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#datos-negocio" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Datos del Establecimiento</a></li>
+              <li><a href="#impresoras-tickets" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Impresora Térmica y Ticket</a></li>
+              <li><a href="#usuarios-permisos" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Cajeros y Roles de Usuario</a></li>
+            </ul>
+          </div>
+
+          <!-- Sección 3 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">🛒</span> Operaciones Diarias
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#apertura-caja" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Apertura de Turno (Fondo)</a></li>
+              <li><a href="#realizar-venta" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Realizar una Venta y Cobro</a></li>
+              <li><a href="#cancelaciones" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Cancelaciones y Devoluciones</a></li>
+              <li><a href="#cierre-caja" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Cierre de Caja (Corte X / Z)</a></li>
+            </ul>
+          </div>
+
+          <!-- Sección 4 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">📦</span> Inventario y Productos
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#alta-productos" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Alta y Edición de Productos</a></li>
+              <li><a href="#ajuste-stock" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Entradas, Mermas y Ajuste</a></li>
+              <li><a href="#categorias" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Departamentos y Categorías</a></li>
+            </ul>
+          </div>
+
+          <!-- Sección 5 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">📊</span> Reportes y Consultas
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#reportes-ganancias" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Utilidades y Ganancia Real</a></li>
+              <li><a href="#ventas-periodo" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Histórico de Ventas por Fecha</a></li>
+            </ul>
+          </div>
+
+          <!-- Sección 6 -->
+          <div>
+            <h5 class="font-extrabold uppercase tracking-wider text-slate-900 font-display text-[11px] mb-3 flex items-center gap-2">
+              <span class="text-brand-blue">❓</span> Soporte
+            </h5>
+            <ul class="space-y-1.5 border-l-2 border-slate-100 ml-1.5 pl-3">
+              <li><a href="#faq" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Preguntas Frecuentes (FAQ)</a></li>
+              <li><a href="#asistencia-compubyte" class="sidebar-link block py-1 text-slate-600 hover:text-brand-blue hover:font-semibold">Soporte Técnico Compubyte</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </aside>
+
+      <!-- Overlay móvil para sidebar -->
+      <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-20 hidden lg:hidden"></div>
+
+      <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
+      <main class="flex-1 py-10 max-w-4xl min-w-0">
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs text-slate-500 mb-6">
+          <a href="index.html" class="hover:text-brand-blue">Computienda</a>
+          <span>/</span>
+          <span class="text-slate-800 font-semibold">Documentación Oficial</span>
+        </nav>
+
+        <!-- Cabecera de Página -->
+        <div class="border-b border-slate-200 pb-8 mb-10">
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight leading-tight">
+            Manual del Usuario & Guía de Configuración
+          </h1>
+          <p class="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+            Bienvenido al centro de aprendizaje oficial de <strong>Computienda POS</strong>. Aquí aprenderás a instalar, configurar periféricos de cobro y dominar las operaciones de venta diaria en tu establecimiento.
+          </p>
+        </div>
+
+        <!-- ==================== SECCIÓN 1: INICIO RÁPIDO ==================== -->
+        <section id="requisitos" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-brand-blue font-bold text-xs uppercase font-mono">01</span>
+            <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Requisitos del Sistema</h2>
+          </div>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Computienda POS es un sistema optimizado de bajo consumo de recursos que puede operar en computadoras modernas o equipos de cómputo reciclados para mostrador:
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+              <span class="font-bold text-slate-800 block text-sm">Requisitos Mínimos</span>
+              <p><strong>Sistema Operativo:</strong> Windows 10 (32 o 64 bits).</p>
+              <p><strong>Procesador:</strong> Intel Core i3 / AMD Athlon 2.0 GHz.</p>
+              <p><strong>Memoria RAM:</strong> 4 GB.</p>
+              <p><strong>Espacio en Disco:</strong> 500 MB libres para base de datos local.</p>
+            </div>
+            <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-200 text-xs space-y-2">
+              <span class="font-bold text-brand-blue block text-sm">Recomendado por Compubyte</span>
+              <p><strong>Sistema Operativo:</strong> Windows 10 / 11 Pro 64 bits.</p>
+              <p><strong>Procesador:</strong> Intel Core i5 o superior.</p>
+              <p><strong>Memoria RAM:</strong> 8 GB.</p>
+              <p><strong>Almacenamiento:</strong> Unidad SSD para apertura instantánea de ventas.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="instalacion" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Instalación Paso a Paso</h2>
+          
+          <ol class="space-y-4 text-sm text-slate-600 list-decimal list-inside pl-2">
+            <li><strong>Descarga del instalador:</strong> Ejecuta el archivo <code>ComputiendaPOS_Setup_v4.5.exe</code> provisto por el equipo técnico de Compubyte.</li>
+            <li><strong>Permisos de Administrador:</strong> Haz clic derecho y selecciona <em>"Ejecutar como administrador"</em> para permitir la correcta creación de la base de datos local.</li>
+            <li><strong>Carpeta de instalación:</strong> Se recomienda mantener la ruta predeterminada <code>C:\ComputiendaPOS\</code>.</li>
+            <li><strong>Acceso Directo:</strong> El asistente colocará automáticamente un icono en tu Escritorio listo para iniciar.</li>
+          </ol>
+
+          <!-- Cuadro de Alerta: Nota Azul -->
+          <div class="p-5 rounded-2xl bg-blue-50 border-l-4 border-brand-blue flex items-start gap-4">
+            <div class="text-brand-blue text-xl font-bold shrink-0">ℹ</div>
+            <div class="text-xs text-slate-700 space-y-1">
+              <p class="font-bold text-brand-dark text-sm">¿Tu instalación incluye kit físico?</p>
+              <p>Si adquiriste la póliza de puesta a punto de Compubyte, nuestros ingenieros configuran de forma remota o presencial los controladores de la impresora térmica y el puerto del cajón.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="primer-inicio" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Primer Inicio y Credenciales por Defecto</h2>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Al abrir el programa por primera vez, verás la pantalla de inicio de sesión de seguridad. Utiliza los accesos de fábrica de nivel Administrador:
+          </p>
+
+          <div class="bg-slate-900 text-slate-200 rounded-xl p-4 font-mono text-xs max-w-sm border border-slate-800 space-y-1">
+            <p><span class="text-slate-500">Usuario:</span> <strong class="text-emerald-400">admin</strong></p>
+            <p><span class="text-slate-500">Contraseña:</span> <strong class="text-emerald-400">1234</strong></p>
+          </div>
+
+          <!-- Cuadro de Advertencia: Amarillo -->
+          <div class="p-5 rounded-2xl bg-amber-50 border-l-4 border-amber-500 flex items-start gap-4">
+            <div class="text-amber-600 text-xl font-bold shrink-0">⚠️</div>
+            <div class="text-xs text-slate-700 space-y-1">
+              <p class="font-bold text-slate-900 text-sm">Cambio obligatorio de contraseña</p>
+              <p>Por seguridad operativa de tu negocio, dirígete al menú <em>Configuración &gt; Usuarios</em> y actualiza la clave del administrador para evitar modificaciones no autorizadas por parte de empleados.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SECCIÓN 2: CONFIGURACIÓN ==================== -->
+        <section id="datos-negocio" class="doc-section scroll-mt-24 space-y-6 mb-16 pt-6 border-t border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-brand-blue font-bold text-xs uppercase font-mono">02</span>
+            <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Datos del Establecimiento</h2>
+          </div>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            En la pestaña <strong>Ajustes &gt; Empresa</strong> completa el nombre comercial, RFC/NIT, dirección y mensaje al pie de ticket (ejemplo: <em>"¡Gracias por su compra! Cambios solo con este ticket"</em>).
+          </p>
+
+          <!-- Mockup Placeholder de Interfaz -->
+          <div class="bg-slate-100 rounded-2xl p-6 border border-slate-200 text-center space-y-2">
+            <div class="flex items-center justify-center gap-2 text-slate-400">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <p class="text-xs font-semibold text-slate-600">Captura de Pantalla: Formulario de Datos de Empresa y Logotipo de Ticket</p>
+            <span class="text-[11px] text-slate-400 font-mono">Menú: Ajustes &gt; Generales &gt; Ticket de Venta</span>
+          </div>
+        </section>
+
+        <section id="impresoras-tickets" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Impresora Térmica y Ticket</h2>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Computienda envía comandos de impresión en formato <code>ESC/POS</code> directo. Sigue estos pasos para asociar tu impresora:
+          </p>
+
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-600 list-disc list-inside pl-2">
+            <li>Selecciona el ancho del papel térmico: <strong>58 mm</strong> (ticket angosto) u <strong>80 mm</strong> (estándar con corte automático).</li>
+            <li>En la lista desplegable de impresoras de Windows, selecciona tu dispositivo (ej. <em>POS-80</em>, <em>Epson TM-T20</em>).</li>
+            <li>Marca la casilla <strong>"Abrir cajón al cobrar"</strong> si tu cajón está conectado mediante cable telefónico RJ11 a la impresora.</li>
+            <li>Presiona el botón <strong>"Imprimir Ticket de Prueba"</strong> para validar nitidez y alineación.</li>
+          </ul>
+        </section>
+
+        <!-- ==================== SECCIÓN 3: OPERACIONES DIARIAS ==================== -->
+        <section id="apertura-caja" class="doc-section scroll-mt-24 space-y-6 mb-16 pt-6 border-t border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-brand-blue font-bold text-xs uppercase font-mono">03</span>
+            <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Apertura de Turno (Fondo de Caja)</h2>
+          </div>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Al iniciar el día laboral, el cajero debe declarar el monto inicial en monedas y billetes para dar cambio:
+          </p>
+
+          <ol class="space-y-2 text-xs sm:text-sm text-slate-600 list-decimal list-inside pl-2">
+            <li>Ingresa a la pantalla principal de <strong>Caja</strong>.</li>
+            <li>Aparecerá la ventana modal: <em>"Declarar Fondo Inicial"</em>.</li>
+            <li>Digita la cantidad (ej. <code>$500.00 MXN</code>) y presiona <strong>Aceptar</strong>. El cajón se abrirá para guardar el dinero.</li>
+          </ol>
+        </section>
+
+        <section id="realizar-venta" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Cómo Realizar una Venta y Cobro Rápido</h2>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            La pantalla de cobro está diseñada para operarse 100% con teclado o con pantalla táctil:
+          </p>
+
+          <div class="space-y-3 text-xs sm:text-sm text-slate-600">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+              <span>Escanear código de barras o digitar clave</span>
+              <kbd class="px-2 py-1 bg-white border border-slate-300 rounded font-mono font-bold text-xs text-brand-dark">Enter</kbd>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+              <span>Buscar producto por nombre descriptivo</span>
+              <kbd class="px-2 py-1 bg-white border border-slate-300 rounded font-mono font-bold text-xs text-brand-dark">F10</kbd>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+              <span>Cobrar y abrir ventana de pago</span>
+              <kbd class="px-2 py-1 bg-brand-accent text-white rounded font-mono font-bold text-xs">F12</kbd>
+            </div>
+          </div>
+        </section>
+
+        <section id="cierre-caja" class="doc-section scroll-mt-24 space-y-6 mb-16">
+          <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Cierre de Caja (Corte X y Corte Z)</h2>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Diferencias clave entre ambos procedimientos de cierre:
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <span class="font-bold text-slate-800 text-sm block">Corte X (Informativo Parcial)</span>
+              <p>Muestra el acumulado de ventas hasta el momento sin cerrar la caja ni reiniciar los contadores. Ideal para cambio de turno a mediodía.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-red-50/60 border border-red-200 space-y-2">
+              <span class="font-bold text-brand-accent text-sm block">Corte Z (Cierre Definitivo)</span>
+              <p>Finaliza la jornada, imprime el resumen consolidado de formas de pago, envía copia por correo al dueño y resetea el turno para el día siguiente.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== SECCIÓN 4: INVENTARIO ==================== -->
+        <section id="alta-productos" class="doc-section scroll-mt-24 space-y-6 mb-16 pt-6 border-t border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-brand-blue font-bold text-xs uppercase font-mono">04</span>
+            <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Alta de Nuevos Productos</h2>
+          </div>
+          
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Ve a <strong>Inventario &gt; Catálogo de Productos</strong> y presiona <strong>Nuevo (F1)</strong>. Los campos clave son:
+          </p>
+
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-600 list-disc list-inside pl-2">
+            <li><strong>Código de Barras:</strong> Escanéalo directamente del empaque del producto o deja en blanco para que el sistema genere un código interno de 4 dígitos.</li>
+            <li><strong>Descripción:</strong> Nombre legible para el ticket (ej. <em>"Detergente Líquido 1L"</em>).</li>
+            <li><strong>Costo y Precio:</strong> Ingresa el costo que te da el proveedor y el precio público. El sistema calculará tu margen de ganancia en porcentaje de forma automática.</li>
+            <li><strong>Existencia y Stock Mínimo:</strong> Si fijas stock mínimo en 5, el sistema te avisará con color ámbar cuando queden 5 piezas o menos.</li>
+          </ul>
+        </section>
+
+        <!-- ==================== SECCIÓN 5: PREGUNTAS FRECUENTES ==================== -->
+        <section id="faq" class="doc-section scroll-mt-24 space-y-6 mb-16 pt-6 border-t border-slate-200">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-brand-blue font-bold text-xs uppercase font-mono">05</span>
+            <h2 class="text-2xl font-bold font-display text-brand-dark tracking-tight">Preguntas Frecuentes (FAQ)</h2>
+          </div>
+
+          <div class="space-y-4">
+            
+            <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <summary class="font-bold text-sm text-brand-dark cursor-pointer flex justify-between items-center">
+                <span>¿Qué pasa si se corta la luz o el Internet?</span>
+                <span class="text-brand-blue font-bold group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+                Computienda guarda cada venta en una base de datos local instantánea. No perderás ninguna transacción ni ventas realizadas. Al volver la energía eléctrica, el sistema reanudará exactamente donde te quedaste.
+              </p>
+            </details>
+
+            <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <summary class="font-bold text-sm text-brand-dark cursor-pointer flex justify-between items-center">
+                <span>¿Cómo hago una copia de seguridad (Backup)?</span>
+                <span class="text-brand-blue font-bold group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+                Ve a <em>Ajustes &gt; Mantenimiento &gt; Crear Respaldo</em>. Se generará un archivo comprimido que puedes guardar en una memoria USB o disco duro externo para mayor protección de tus catálogos y ventas.
+              </p>
+            </details>
+
+            <details class="group bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <summary class="font-bold text-sm text-brand-dark cursor-pointer flex justify-between items-center">
+                <span>¿Se pueden conectar 2 computadoras a la misma base de datos?</span>
+                <span class="text-brand-blue font-bold group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+                Sí. Puedes configurar un equipo como <strong>Servidor Principal</strong> y otras máquinas como <strong>Cajas Esclavas</strong> conectadas mediante la red local (WiFi o cable Ethernet).
+              </p>
+            </details>
+
+          </div>
+        </section>
+
+        <!-- ==================== CANAL DE SOPORTE DIRECTO ==================== -->
+        <section id="asistencia-compubyte" class="p-8 rounded-3xl bg-brand-dark text-white border border-slate-800 space-y-4 mb-16">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+            <span class="text-xs font-mono text-slate-400">Mesa de Asistencia Técnica Compubyte</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold font-display text-white">¿Tienes dudas o requieres asistencia remota?</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+            Si requieres configuración de impresoras especiales, básculas o migración de catálogos masivos desde Excel, nuestro equipo técnico te asiste en tiempo real vía AnyDesk o WhatsApp.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="https://api.whatsapp.com/send?phone=526679876543&text=Hola,%20solicito%20soporte%20tecnico%20de%20Computienda%20POS" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs flex items-center gap-2 transition">
+              <span>Abrir Chat de Soporte</span>
+            </a>
+            <a href="../index.html#contacto" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xs border border-slate-700 transition">
+              Contactar a Compubyte
+            </a>
+          </div>
+        </section>
+
+        <!-- ==================== BOTONES DE NAVEGACIÓN INFERIOR ==================== -->
+        <div class="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+          <a href="index.html" class="w-full sm:w-auto p-4 rounded-xl border border-slate-200 hover:border-brand-blue flex items-center gap-3 transition group">
+            <span class="text-base text-brand-blue group-hover:-translate-x-1 transition-transform">←</span>
+            <div>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Página Anterior</span>
+              <span class="font-bold text-brand-dark">Landing Computienda POS</span>
+            </div>
+          </a>
+
+          <a href="#instalacion" class="w-full sm:w-auto p-4 rounded-xl border border-slate-200 hover:border-brand-blue flex items-center justify-between sm:justify-end gap-3 transition group text-right">
+            <div>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Siguiente Capítulo</span>
+              <span class="font-bold text-brand-dark">Guía de Configuración &gt;</span>
+            </div>
+            <span class="text-base text-brand-blue group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-brand-dark text-slate-400 border-t border-slate-800 py-10 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs space-y-2">
+      <p>&copy; 2026 Computienda POS. Documentación oficial mantenida por el equipo de ingeniería de Compubyte.</p>
+      <p class="text-slate-500 text-[11px]">Todos los nombres y comandos mencionados corresponden a la versión 4.5 estable.</p>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Toggle Mobile Sidebar
+    const mobileBtn = document.getElementById('toggle-sidebar-mobile');
+    const sidebar = document.getElementById('docs-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    function toggleMenu() {
+      const isHidden = sidebar.classList.contains('-translate-x-full');
+      if (isHidden) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    mobileBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 1024) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Filtro de Búsqueda rápida en el manual
+    const searchInput = document.getElementById('docs-search');
+    const sections = document.querySelectorAll('.doc-section');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      sections.forEach(sec => {
+        const text = sec.innerText.toLowerCase();
+        if (term === '' || text.includes(term)) {
+          sec.classList.remove('opacity-25');
+        } else {
+          sec.classList.add('opacity-25');
+        }
+      });
+    });
+
+    // Atajo de teclado Ctrl + K para enfocar buscador
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
