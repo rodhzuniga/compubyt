@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Condiciones de Servicio y Uso · Asistente de Pedidos WhatsApp | Compubyte</title>
+  <meta name="description" content="Condiciones de uso y servicio de Compubyte para usuarios y clientes del asistente de pedidos automatizados por WhatsApp.">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              primary: '#1E3A8A',
+              blue: '#2563EB',
+              accent: '#DC2626',
+              accentHover: '#B91C1C',
+              surface: '#F8FAFC',
+              text: '#334155'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-surface text-brand-text font-sans antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen">
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-xl p-1">
+          <img 
+            src="assets/img/logo.png" 
+            alt="Compubyte" 
+            class="h-10 sm:h-11 w-auto max-w-[160px] object-contain transition-transform group-hover:scale-105"
+            onerror="this.style.display='none'; document.getElementById('logo-fallback-icon').style.display='flex';"
+          >
+          <div id="logo-fallback-icon" class="hidden w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-dark to-brand-blue items-center justify-center text-white shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <span class="text-2xl font-extrabold font-display tracking-tight text-brand-dark">
+            Compu<span class="text-brand-accent">byte</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6">
+          <a href="index.html#inicio" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Inicio</a>
+          <a href="index.html#nosotros" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Sobre Nosotros</a>
+          <a href="index.html#servicios" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Servicios</a>
+          <a href="index.html#tienda" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors flex items-center gap-1">
+            <span>🛒</span> Tienda en Línea
+          </a>
+          <a href="blog.html" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Blog</a>
+          <a href="index.html#contacto" class="text-sm font-semibold text-slate-700 hover:text-brand-blue transition-colors">Contacto</a>
+        </nav>
+
+        <!-- Botones CTA: Tienda en Línea y Computienda POS -->
+        <div class="hidden lg:flex items-center gap-2.5">
+          <a 
+            href="https://www.productos-info.com/tienda/compubyte" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs uppercase tracking-wider font-extrabold text-brand-blue bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all transform hover:-translate-y-0.5"
+            title="Abrir tienda en línea oficial"
+          >
+            <span class="mr-1.5">🛒</span> Tienda en Línea
+          </a>
+          <a 
+            href="./computienda/index.html" 
+            class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-extrabold text-white bg-brand-accent hover:bg-brand-accentHover shadow-md transition-all transform hover:-translate-y-0.5"
+          >
+            <span class="mr-1.5">⚡</span> Punto de Venta Computienda
+          </a>
+        </div>
+
+        <!-- Botón Menú Hamburguesa Móvil -->
+        <div class="lg:hidden flex items-center">
+          <button 
+            id="mobile-menu-btn" 
+            type="button" 
+            class="p-2.5 rounded-xl text-slate-700 hover:text-brand-dark hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue transition-colors" 
+            aria-label="Abrir menú de navegación"
+          >
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-5 pt-3 pb-6 space-y-3 transition-all">
+      <a href="index.html#inicio" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Inicio</a>
+      <a href="index.html#nosotros" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Sobre Nosotros</a>
+      <a href="index.html#servicios" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Servicios</a>
+      <a href="index.html#tienda" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue flex items-center justify-between">
+        <span>🛒 Tienda en Línea</span>
+        <span class="text-[10px] font-bold bg-blue-100 text-brand-blue px-2 py-0.5 rounded">Catálogo</span>
+      </a>
+      <a href="blog.html" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Blog</a>
+      <a href="index.html#contacto" class="mobile-nav-link block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Contacto</a>
+      
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <a 
+          href="https://www.productos-info.com/tienda/compubyte" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="mobile-nav-link w-full text-center py-2.5 px-4 rounded-xl bg-blue-50 text-brand-blue border border-blue-200 font-bold text-xs uppercase tracking-wider shadow-sm flex items-center justify-center gap-2"
+        >
+          <span>🛒</span> Visitar Tienda en Línea ↗
+        </a>
+        <a 
+          href="./computienda/index.html" 
+          class="mobile-nav-link w-full text-center py-3 px-4 rounded-xl bg-brand-accent text-white font-bold text-xs uppercase tracking-wider shadow-md"
+        >
+          ⚡ Punto de Venta Computienda
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== BANNER SUPERIOR / BREADCRUMB ==================== -->
+  <section class="bg-gradient-to-b from-slate-100 via-brand-surface to-brand-surface border-b border-slate-200/70 py-10 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Navegación migas de pan -->
+      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-6 font-medium">
+        <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-brand-dark font-semibold">Condiciones de Uso</span>
+      </nav>
+
+      <!-- Badge Distintivo -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-brand-blue text-xs font-semibold mb-4">
+        <svg class="w-4 h-4 text-brand-blue" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+        </svg>
+        <span>Asistente de Pedidos por WhatsApp</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-brand-dark tracking-tight leading-tight">
+        Condiciones de Servicio y Uso
+      </h1>
+      <p class="mt-3 text-sm sm:text-base text-slate-600 font-medium">
+        Asistente de pedidos por WhatsApp · Compubyte
+      </p>
+      <p class="mt-1 text-xs text-slate-400">
+        Última actualización: 14 de noviembre de 2026
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTENIDO DE CONDICIONES DE USO ==================== -->
+  <main class="flex-1 py-10 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm p-6 sm:p-10 lg:p-12 space-y-10 text-slate-700 leading-relaxed text-[15px] sm:text-base">
+
+        <!-- 1. Quiénes somos y a quién aplican -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">1.</span> Quiénes somos y a quién aplican
+          </h2>
+          <p>
+            Estas condiciones regulan el uso del asistente automático de pedidos por WhatsApp operado por Rodolfo Hernández Zúñiga, persona física, con nombre comercial <strong>Compubyte</strong> (en adelante, "Compubyte"), con domicilio en Avenida 3 Pte. 416, Huatusco, Veracruz, C.P. 94100.
+          </p>
+          <p>
+            Aplican a toda persona que le escribe al asistente para hacer un pedido (en adelante, "usted"). Al seguir la conversación con el asistente, usted acepta estas condiciones. Si no está de acuerdo, no use el servicio.
+          </p>
+        </section>
+
+        <!-- 2. Qué es el servicio y qué no es -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">2.</span> Qué es el servicio y qué no es
+          </h2>
+          <p>
+            El asistente es una herramienta que le permite ver el menú de un negocio, armar un pedido y enviárselo. Compubyte solo proporciona la herramienta tecnológica.
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>
+              <strong>La venta es entre usted y el negocio.</strong> El negocio es quien prepara, cobra, entrega y responde por los productos, sus precios y su calidad. Compubyte no vende ni entrega productos.
+            </li>
+            <li>
+              <strong>Compubyte no cobra ni recibe pagos</strong> a través del asistente. La forma y el momento de pago los define el negocio.
+            </li>
+            <li>
+              Un pedido enviado <strong>no queda confirmado</strong> hasta que el negocio lo acepte. El negocio puede aceptarlo o rechazarlo, y el asistente le avisará el resultado.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 3. Menú, precios y disponibilidad -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">3.</span> Menú, precios y disponibilidad
+          </h2>
+          <p>
+            El menú, los precios y la disponibilidad los captura el negocio y pueden cambiar sin previo aviso. Hacemos lo posible por que se muestren correctos, pero pueden existir errores; en ese caso el negocio se pondrá en contacto con usted para aclararlo antes de preparar el pedido.
+          </p>
+        </section>
+
+        <!-- 4. Su uso del servicio -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">4.</span> Su uso del servicio
+          </h2>
+          <p>Usted se compromete a:</p>
+          <ul class="list-disc pl-6 space-y-2 text-slate-700">
+            <li>Dar datos verdaderos en sus pedidos, en especial el nombre y las indicaciones.</li>
+            <li>No hacer pedidos falsos, de broma o con la intención de causar un perjuicio al negocio.</li>
+            <li>No intentar dañar, saturar, engañar o acceder sin permiso al asistente ni a sus sistemas.</li>
+            <li>No enviar contenido ilegal, ofensivo o que dañe a terceros.</li>
+          </ul>
+          <p class="text-sm font-medium text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            Podemos o el negocio puede dejar de atender a un número que incumpla estas reglas.
+          </p>
+        </section>
+
+        <!-- 5. WhatsApp y Meta -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">5.</span> WhatsApp y Meta
+          </h2>
+          <p>
+            El servicio funciona sobre WhatsApp Business, de Meta Platforms, Inc. Usted también está sujeto a los términos y avisos de privacidad de WhatsApp y de Meta, que Compubyte no controla. Compubyte no es responsable de fallas, cortes o cambios de esa plataforma.
+          </p>
+        </section>
+
+        <!-- 6. Pedir hablar con una persona -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">6.</span> Pedir hablar con una persona
+          </h2>
+          <p>
+            El asistente es automático. Si usted pide hablar con una persona, el asistente avisa al negocio y, cuando el negocio lo ha configurado, le da un teléfono para atención inmediata. El número de WhatsApp del asistente no atiende conversaciones directas con personas.
+          </p>
+        </section>
+
+        <!-- 7. Disponibilidad del servicio -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">7.</span> Disponibilidad del servicio
+          </h2>
+          <p>
+            Procuramos que el asistente funcione todo el tiempo, pero no garantizamos que esté libre de interrupciones o errores. Puede suspenderse por mantenimiento, fallas técnicas o causas ajenas a nosotros.
+          </p>
+        </section>
+
+        <!-- 8. Sus datos personales -->
+        <section class="space-y-3 p-6 rounded-2xl bg-blue-50/60 border border-blue-200/70">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-blue-200/50 pb-2">
+            <span class="text-brand-blue">8.</span> Sus datos personales
+          </h2>
+          <p>
+            El tratamiento de sus datos personales se explica en nuestro <a href="privacidad.html" class="text-brand-blue font-bold hover:underline">Aviso de Privacidad</a>, que forma parte de estas condiciones. Ahí también encontrará cómo ejercer sus derechos y pedir que borremos sus datos.
+          </p>
+          <div class="pt-1">
+            <a 
+              href="privacidad.html" 
+              class="inline-flex items-center gap-2 text-xs font-bold text-brand-blue hover:underline"
+            >
+              <span>Consultar el Aviso de Privacidad completo</span>
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 9. Responsabilidad -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">9.</span> Responsabilidad
+          </h2>
+          <p>
+            En la medida que la ley lo permita, Compubyte no es responsable por: la calidad, el precio, la preparación, el tiempo de entrega o la entrega de los productos, que corresponden al negocio; los daños por interrupciones del servicio o de WhatsApp; ni los errores en el menú o los precios capturados por el negocio. Nada de lo anterior limita los derechos que la ley le reconoce como consumidor frente al negocio, ni la responsabilidad que no pueda excluirse por ley.
+          </p>
+        </section>
+
+        <!-- 10. Cambios a estas condiciones -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">10.</span> Cambios a estas condiciones
+          </h2>
+          <p>
+            Podemos modificar estas condiciones. Publicaremos la versión nueva en esta misma página con su fecha de actualización. Si sigue usando el servicio después del cambio, se entiende que la acepta.
+          </p>
+        </section>
+
+        <!-- 11. Ley aplicable -->
+        <section class="space-y-3">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">11.</span> Ley aplicable
+          </h2>
+          <p>
+            Estas condiciones se rigen por las leyes de los Estados Unidos Mexicanos. Para cualquier controversia, las partes se someten a los tribunales competentes de Huatusco, Veracruz, sin perjuicio de los derechos que la ley otorga al consumidor.
+          </p>
+        </section>
+
+        <!-- 12. Contacto -->
+        <section class="space-y-4 pt-4 border-t border-slate-100">
+          <h2 class="text-xl sm:text-2xl font-bold font-display text-brand-dark flex items-center gap-2 border-b border-slate-100 pb-2">
+            <span class="text-brand-blue">12.</span> Contacto
+          </h2>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm space-y-1">
+            <p class="font-bold text-brand-dark">Compubyte</p>
+            <p>📍 Avenida 3 Pte. 416, Huatusco, Veracruz, C.P. 94100</p>
+            <p>✉️ <a href="mailto:contacto@compubyt.com" class="text-brand-blue font-semibold hover:underline">contacto@compubyt.com</a></p>
+            <p>🌐 <a href="https://www.compubyt.com" class="text-brand-blue font-semibold hover:underline">www.compubyt.com</a></p>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-brand-dark text-slate-300 pt-16 pb-12 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Info Marca -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="index.html#inicio" class="flex items-center gap-3">
+            <img 
+              src="assets/img/logo.png" 
+              alt="Compubyte" 
+              class="h-9 w-auto max-w-[140px] object-contain brightness-0 invert"
+              onerror="this.style.display='none';"
+            >
+            <span class="text-2xl font-extrabold font-display tracking-tight text-white">
+              Compu<span class="text-brand-accent">byte</span>
+            </span>
+          </a>
+          <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+            Soluciones informáticas profesionales, mantenimiento preventivo, infraestructura de redes y el sistema de punto de venta Computienda POS en Huatusco, Ver.
+          </p>
+          <div class="text-xs text-slate-300 space-y-1 pt-1 font-medium">
+            <p>📍 Avenida 3 poniente 416, Huatusco, Ver.</p>
+            <p>📞 Tel / WhatsApp: <a href="https://wa.me/524981152637" class="hover:text-white underline">498-115 2637</a></p>
+            <p>✉️ <a href="mailto:contacto@compubyt.com" class="hover:text-white underline">contacto@compubyt.com</a></p>
+          </div>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Navegación</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="index.html#nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+            <li><a href="index.html#servicios" class="hover:text-white transition-colors">Servicios TI</a></li>
+            <li><a href="index.html#tienda" class="hover:text-white transition-colors">Tienda en Línea</a></li>
+            <li><a href="blog.html" class="hover:text-white transition-colors">Blog y Consejos</a></li>
+            <li><a href="index.html#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+            <li><a href="privacidad.html" class="hover:text-white transition-colors">Aviso de Privacidad</a></li>
+            <li><a href="condiciones.html" class="text-brand-accent font-semibold hover:underline">Condiciones de Uso</a></li>
+          </ul>
+        </div>
+
+        <!-- Tienda y Soluciones -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Tienda y Software</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="https://www.productos-info.com/tienda/compubyte" target="_blank" rel="noopener noreferrer" class="text-brand-accent font-bold hover:underline flex items-center gap-1.5"><span>🛒</span> Tienda en Línea Oficial ↗</a></li>
+            <li><a href="./computienda/index.html" class="hover:text-white transition-colors">Computienda POS</a></li>
+            <li><a href="./computienda/manual.html" class="hover:text-white transition-colors">Manual del Usuario</a></li>
+            <li><a href="index.html#tienda" class="hover:text-white transition-colors">Laptops y Computadoras</a></li>
+            <li><a href="index.html#tienda" class="hover:text-white transition-colors">Componentes y Actualizaciones</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes Sociales y Soporte -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white font-display">Atención Rápida</h4>
+          <p class="text-xs text-slate-400">
+            ¿Requieres asistencia inmediata? Escríbenos directamente a nuestro WhatsApp oficial:
+          </p>
+          <a 
+            href="https://wa.me/524981152637?text=Hola%20Compubyte,%20solicito%20asistencia%20tecnica" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition"
+          >
+            <span>Chat de WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright y Datos Legales -->
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 Compubyte. Todos los derechos reservados. Huatusco, Ver., México.</p>
+        <div class="flex items-center gap-3 text-xs">
+          <a href="privacidad.html" class="text-slate-400 hover:text-white underline transition-colors">Aviso de Privacidad</a>
+          <span class="text-slate-600">•</span>
+          <a href="condiciones.html" class="text-slate-400 hover:text-white underline transition-colors">Condiciones de Uso</a>
+        </div>
+        <p class="text-center md:text-right text-[11px] max-w-md text-slate-500">
+          Compubyte y Computienda POS son marcas dedicadas a la prestación de servicios informáticos y comercialización de software.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Menu Hamburguesa Mobile
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = !mobileMenu.classList.contains('hidden');
+        if (isExpanded) {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+      });
+    }
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

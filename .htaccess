@@ -1,3 +1,9 @@
+RewriteEngine On
+
+# Rutas amigables sin extension .html
+RewriteRule ^condiciones/?$ condiciones.html [NC,L]
+RewriteRule ^privacidad/?$ privacidad.html [NC,L]
+
 # Desactivar cache para archivos HTML para reflejar cambios inmediatos
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|htm)$">
